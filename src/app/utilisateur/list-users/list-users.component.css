@@ -1,0 +1,9 @@
+table td.highlight {
+    background-color: #4CAF50 !important;
+    color: #ffffff;
+}
+
+table td.noactif {
+    background-color: red !important;
+    color: #ffffff;
+}

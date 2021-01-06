@@ -1,1 +1,36 @@
-<p>detail-user works!</p>
+<div class="row">
+
+    <div class="col-xl-8 col-lg-7">
+
+        <!-- Area Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Détails de l'utilisateur</h6>
+            </div>
+            <div class="card-body">
+                
+                    <div>
+                        <label> <b> Id : </b></label> {{user.id}}
+                    </div>
+                
+                    <div>
+                        <label> <b> Name : </b></label> {{user.name}}
+                    </div>
+                    <div>
+                        <label> <b> Username : </b></label>  {{user.username}}
+                    </div>
+                    <div>
+                        <label> <b> Email : </b></label>  {{user.email}}
+                    </div>
+               
+               
+        
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="list-user" routerLink="list-user">
+                    <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>retour
+                </a>
+                
+           </div> 
+        </div>
+</div>

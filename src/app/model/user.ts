@@ -1,10 +1,14 @@
+import { Departement } from "./departement";
+
 export class User {
     id : number;
-	name: string;
-    username: string;
-    email: string;
-    roles: string;
-    password: string;
+    firstname : string;
+    name: string;
+      username: string;
+      email: string;
+      role: string[];
+      password: string;
+      departement : Departement;
   //  profileUser : string;
  
    

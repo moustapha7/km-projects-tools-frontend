@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { Departement } from '../model/departement';
 
 
 
@@ -37,6 +38,7 @@ export class AuthService {
       firstname: user.firstname,
       name: user.name,
       username: user.username,
+      departement : user.departement,
       email: user.email,
       password: user.password
     }, httpOptions);
@@ -57,6 +59,15 @@ export class AuthService {
     this.jwt = jwt;
     this.parseJWT();
   }
+
+  //list depertements
+
+  getAllDepartement() : Observable<Departement[]>
+  {
+    return this.http.get<Departement[]>(AUTH_API+'listDepartement');
+  }
+
+
 
   parseJWT()
   {

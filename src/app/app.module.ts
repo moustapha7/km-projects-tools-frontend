@@ -19,6 +19,10 @@ import { DetailUserComponent } from './utilisateur/detail-user/detail-user.compo
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
+import { ListDepartementComponent } from './departement/list-departement/list-departement.component';
+import { AddDepartementComponent } from './departement/add-departement/add-departement.component';
+import { AddTaskComponent } from './task/add-task/add-task.component';
+import { ListTaskComponent } from './task/list-task/list-task.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
     ListTeamComponent,
     AddTeamComponent,
     ListUsersComponent,
-    DetailUserComponent
+    DetailUserComponent,
+    ListDepartementComponent,
+    AddDepartementComponent,
+    AddTaskComponent,
+    ListTaskComponent
   ],
   imports: [
     BrowserModule,
