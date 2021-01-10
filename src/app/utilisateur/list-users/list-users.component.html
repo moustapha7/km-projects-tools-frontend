@@ -41,7 +41,7 @@
                     <tbody>
                         <tr *ngFor="let user of users">
                             <td>{{user.id}}</td>
-                            <td  [ngClass]="{'highlight':user.activated ==true } ">{{user.activated}}</td>
+                            <td ><span  [ngClass]="{'highlight':user.activated ==true }">{{user.activated}}</span></td>
                             <td>{{user.firstname}}</td>
                             <td>{{user.name}}</td>
                             <td>{{user.username}}</td>

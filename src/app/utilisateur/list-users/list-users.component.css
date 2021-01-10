@@ -1,9 +1,9 @@
-table td.highlight {
+table span.highlight {
     background-color: #4CAF50 !important;
     color: #ffffff;
 }
 
-table td.noactif {
+table span.noactif {
     background-color: red !important;
     color: #ffffff;
 }

@@ -12,10 +12,10 @@ export class DetailUserComponent implements OnInit {
 
   id:number;
   user : User;
-  constructor(private route: ActivatedRoute, private userService :UserService) { }
+  constructor(private acroute: ActivatedRoute, private userService :UserService) { }
 
   ngOnInit(): void {
-    this.id= this.route.snapshot.params['id'];
+    this.id= this.acroute.snapshot.params['id'];
 
     this.user = new User();
     this.userService.getUserById(this.id).subscribe(data => {

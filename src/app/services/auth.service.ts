@@ -60,12 +60,7 @@ export class AuthService {
     this.parseJWT();
   }
 
-  //list depertements
-
-  getAllDepartement() : Observable<Departement[]>
-  {
-    return this.http.get<Departement[]>(AUTH_API+'listDepartement');
-  }
+ 
 
 
 
@@ -96,6 +91,19 @@ export class AuthService {
    this.jwt = localStorage.getItem('token');
    this.parseJWT();
   }
+
+
+
+
+
+
+
+   //list depertements
+
+   getAllDepartement() : Observable<Departement[]>
+   {
+     return this.http.get<Departement[]>(AUTH_API+'listDepartement');
+   }
 
 
 

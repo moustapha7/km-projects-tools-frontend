@@ -7,6 +7,7 @@ import { ListDepartementComponent } from './departement/list-departement/list-de
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
+import { DetailProjectComponent } from './project/detail-project/detail-project.component';
 import { ListProjectComponent } from './project/list-project/list-project.component';
 import { AddProjectTypeComponent } from './projecttype/add-project-type/add-project-type.component';
 import { ListProjectTypeComponent } from './projecttype/list-project-type/list-project-type.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
 
   {path : 'list-project', component : ListProjectComponent},
   {path : 'add-project', component : AddProjectComponent},
+  { path: 'detail-project/:id', component: DetailProjectComponent },
  
   {path : 'list-project-type', component : ListProjectTypeComponent},
   {path : 'add-project-type', component : AddProjectTypeComponent},
@@ -45,6 +47,10 @@ const routes: Routes = [
 
   {path : 'list-task', component : ListTaskComponent},
   {path : 'add-task', component : AddTaskComponent},
+
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
 
   
 

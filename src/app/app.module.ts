@@ -23,6 +23,7 @@ import { ListDepartementComponent } from './departement/list-departement/list-de
 import { AddDepartementComponent } from './departement/add-departement/add-departement.component';
 import { AddTaskComponent } from './task/add-task/add-task.component';
 import { ListTaskComponent } from './task/list-task/list-task.component';
+import { DetailProjectComponent } from './project/detail-project/detail-project.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListTaskComponent } from './task/list-task/list-task.component';
     ListDepartementComponent,
     AddDepartementComponent,
     AddTaskComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    DetailProjectComponent
   ],
   imports: [
     BrowserModule,

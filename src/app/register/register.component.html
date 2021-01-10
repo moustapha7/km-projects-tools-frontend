@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label>Choisir son  Departement</label>
                 <select class="form-control" id="departement" name="departement" [(ngModel)]="selectedDepartement">
-                    <option>.....Selectionner....</option>
+                    <option selected>.....Selectionner....</option>
                     <option *ngFor="let dep of departements" [ngValue]="dep"> {{dep.name}} </option>
                 </select>
             </div>
