@@ -30,46 +30,46 @@ import { ListUsersComponent } from './utilisateur/list-users/list-users.componen
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  {path : 'profile', component : ProfileComponent, canActivate : [AuthGuard]},
+  {path : 'profile', component : ProfileComponent},
 
 
-  {path : 'list-client', component : ListClientComponent, canActivate : [AuthGuard]},
-  {path : 'add-client', component : AddClientComponent, canActivate : [AuthGuard]},
-  { path: 'edit-client/:id', component: EditClientComponent, canActivate : [AuthGuard] },
-
-  
-  {path : 'list-project', component : ListProjectComponent, canActivate : [AuthGuard]},
-  {path : 'add-project', component : AddProjectComponent, canActivate : [AuthGuard]},
-  { path: 'detail-project/:id', component: DetailProjectComponent, canActivate : [AuthGuard] },
-  { path: 'edit-project/:id', component: EditProjectComponent, canActivate : [AuthGuard] },
- 
-
-  {path : 'list-project-type', component : ListProjectTypeComponent, canActivate : [AuthGuard]},
-  {path : 'add-project-type', component : AddProjectTypeComponent, canActivate : [AuthGuard]},
-  { path: 'edit-project-type/:id', component: EditProjectTypeComponent, canActivate : [AuthGuard] },
- 
-
-  {path : 'list-team', component : ListTeamComponent, canActivate : [AuthGuard]},
-  {path : 'add-team', component : AddTeamComponent, canActivate : [AuthGuard]},
-  { path: 'edit-team/:id', component: EditTeamComponent, canActivate : [AuthGuard] },
-
-
-  {path : 'list-user', component : ListUsersComponent, canActivate : [AuthGuard]},
-  { path: 'details-user/:id', component: DetailUserComponent, canActivate : [AuthGuard] },
- 
-  
-
-  {path : 'list-departement', component : ListDepartementComponent, canActivate : [AuthGuard]},
-  {path : 'add-departement', component : AddDepartementComponent, canActivate : [AuthGuard]},
-  { path: 'edit-departement/:id', component: EditDepartementComponent , canActivate : [AuthGuard]},
+  {path : 'list-client', component : ListClientComponent},
+  {path : 'add-client', component : AddClientComponent},
+  { path: 'edit-client/:id', component: EditClientComponent},
 
   
-  {path : 'list-task', component : ListTaskComponent, canActivate : [AuthGuard]},
-  {path : 'add-task', component : AddTaskComponent, canActivate : [AuthGuard]},
-  { path: 'edit-task/:id', component: EditTaskComponent, canActivate : [AuthGuard] },
+  {path : 'list-project', component : ListProjectComponent},
+  {path : 'add-project', component : AddProjectComponent},
+  { path: 'detail-project/:id', component: DetailProjectComponent },
+  { path: 'edit-project/:id', component: EditProjectComponent},
+ 
+
+  {path : 'list-project-type', component : ListProjectTypeComponent},
+  {path : 'add-project-type', component : AddProjectTypeComponent},
+  { path: 'edit-project-type/:id', component: EditProjectTypeComponent },
+ 
+
+  {path : 'list-team', component : ListTeamComponent},
+  {path : 'add-team', component : AddTeamComponent},
+  { path: 'edit-team/:id', component: EditTeamComponent},
 
 
- // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path : 'list-user', component : ListUsersComponent},
+  { path: 'details-user/:id', component: DetailUserComponent },
+ 
+  
+
+  {path : 'list-departement', component : ListDepartementComponent},
+  {path : 'add-departement', component : AddDepartementComponent},
+  { path: 'edit-departement/:id', component: EditDepartementComponent },
+
+  
+  {path : 'list-task', component : ListTaskComponent},
+  {path : 'add-task', component : AddTaskComponent},
+  { path: 'edit-task/:id', component: EditTaskComponent, },
+
+
+  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
  // { path: '', pathMatch: 'full', redirectTo: '/login' },
 
   

@@ -1,36 +1,65 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
-            <div class="card-header bg-primary"> <h5 class="card-title">Ajout Team</h5></div>
+            <div class="card-header bg-primary">
+                <h5 class="card-title">Ajout Team</h5>
+            </div>
             <div class="card-body">
-               
 
-                <form (ngSubmit)="saveTeam()">
 
-                
+                <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && saveTeam()" #f="ngForm" novalidate>
+
+
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" id="libelle" [(ngModel)]="team.name" name="name">
+                        <label for="name">Name </label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" 
+                            minlength="3" maxlength="20" #name="ngModel" />
+                        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                                Name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                                Name must be at most 20 characters
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="email">Description</label>
+                        <textarea type="text" class="form-control" name="description" [(ngModel)]="form.description"
+                            required description #description="ngModel"></textarea>
+                        <div class="alert-danger" *ngIf="f.submitted && description.invalid">
+                            <div *ngIf="description.errors.required">description is required</div>
+
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label>Teach Lead</label>
-                        <select class="form-control" id="user" name="user" [(ngModel)]="selectedTechLead">
-                            <option>.....Selectionner....</option>
-                            <option *ngFor="let uste of userTeachs" [ngValue]="uste"> {{uste.firstname}} {{uste.name}} </option>
+                        <label>Tech Lead</label>
+                        <select class="form-control" id="usertech" name="usertech" [(ngModel)]="selectedTechLead"   #usertech="ngModel" required usertech
+                           >
+                            <option selected>.....Selectionner....</option>
+                            <option *ngFor="let ust of usertechs" [ngValue]="ust"> {{ust.name}} </option>
                         </select>
+                        <div class="alert-danger" *ngIf="f.submitted && usertech.invalid">
+                            <div *ngIf="usertech.errors.required">teach lead is required</div>
+                        </div>
                     </div>
 
-                    
+ 
                     <div class="form-group">
-                        <label>Description</label>
-                        <textarea type="text" class="form-control" id="description" [(ngModel)]="team.description" name="description"></textarea>
+                        <button class="btn btn-primary btn-block">Save</button>
                     </div>
-
-                    <button class="btn btn-success" type="submit">save</button>
+                    <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
+                        ajout team failed!<br />{{ errorMessage }}
+                    </div>
 
                 </form>
+                <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your add project is successful!
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
+</div>

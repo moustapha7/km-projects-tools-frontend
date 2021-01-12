@@ -6,15 +6,11 @@
 
             <div class="form-group">
                 <label for="title">Name:</label>
-                <input formControlName="name" id="name" type="text" class="form-control"  minlength="4" maxlength="50" >
+                <input formControlName="name" id="name" type="text" class="form-control" 
+                 minlength="4" maxlength="50"  >
                 <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
                     <div *ngIf="f.name.errors.required">name is required.</div>
-                     <div *ngIf="name.errors.minlength">
-                        Name must be at least 3 characters
-                    </div>
-                    <div *ngIf="name.errors.maxlength">
-                        Name must be at most 20 characters
-                    </div>
+                     
                 </div>
             </div>
 

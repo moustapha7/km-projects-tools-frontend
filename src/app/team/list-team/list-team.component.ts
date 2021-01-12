@@ -45,9 +45,9 @@ export class ListTeamComponent implements OnInit {
     )
   }
 
-  updateTeam(id : number)  {
+  editTeam(id : number)  {
  
-    this.router.navigate(['update-team', id]);
+    this.router.navigate(['edit-team', id]);
   }
 
   deleteTeam(id :number) 
