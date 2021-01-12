@@ -1,1 +1,36 @@
-<p>add-team works!</p>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header bg-primary"> <h5 class="card-title">Ajout Team</h5></div>
+            <div class="card-body">
+               
+
+                <form (ngSubmit)="saveTeam()">
+
+                
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="libelle" [(ngModel)]="team.name" name="name">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Teach Lead</label>
+                        <select class="form-control" id="user" name="user" [(ngModel)]="selectedTechLead">
+                            <option>.....Selectionner....</option>
+                            <option *ngFor="let uste of userTeachs" [ngValue]="uste"> {{uste.firstname}} {{uste.name}} </option>
+                        </select>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" class="form-control" id="description" [(ngModel)]="team.description" name="description"></textarea>
+                    </div>
+
+                    <button class="btn btn-success" type="submit">save</button>
+
+                </form>
+            </div>
+        </div>
+    </div> 

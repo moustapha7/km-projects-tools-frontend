@@ -23,7 +23,10 @@ export class AuthService {
   jwt : string;
   username :string;
   roles : Array<string>;
+  isLoggedIn = true;
+  loggedUser : string;
 
+  
   constructor(private http: HttpClient) { }
 
   login(credentials): Observable<any> {
@@ -58,6 +61,16 @@ export class AuthService {
     localStorage.setItem('token',jwt);
     this.jwt = jwt;
     this.parseJWT();
+  }
+
+
+  loggedIn()
+  {
+    
+    this.loggedUser = localStorage.getItem('token');
+    console.log(this.loggedUser);
+    return this.loggedUser;
+   
   }
 
  

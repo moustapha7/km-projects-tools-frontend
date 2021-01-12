@@ -50,8 +50,14 @@
                             <td>{{user.departement.name}}</td>   
 
                             <td >
-                                <button  *ngIf="showAdminBoard || showUserBoard"  class="btn btn-warning"  (click)="userDetails(user.id)"> details </button>
-                                <button  *ngIf="showAdminBoard"  class="btn btn-danger" >delete</button>
+                                <button  *ngIf="showAdminBoard || showUserBoard"  class="btn btn-primary"  (click)="userDetails(user.id)">
+                                    <i class="fa fa-eye"></i> details 
+                                    
+                               </button>
+
+                                <button  *ngIf="showAdminBoard"  class="btn btn-danger" >
+                                    <i class="fa fa-trash"></i>delete
+                                </button>
                             </td> 
                         </tr>
                        

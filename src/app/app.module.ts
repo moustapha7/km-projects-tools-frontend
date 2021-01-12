@@ -16,7 +16,7 @@ import { ListTeamComponent } from './team/list-team/list-team.component';
 import { AddTeamComponent } from './team/add-team/add-team.component';
 import { ListUsersComponent } from './utilisateur/list-users/list-users.component';
 import { DetailUserComponent } from './utilisateur/detail-user/detail-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
 import { ListDepartementComponent } from './departement/list-departement/list-departement.component';
@@ -24,6 +24,13 @@ import { AddDepartementComponent } from './departement/add-departement/add-depar
 import { AddTaskComponent } from './task/add-task/add-task.component';
 import { ListTaskComponent } from './task/list-task/list-task.component';
 import { DetailProjectComponent } from './project/detail-project/detail-project.component';
+import { EditProjectComponent } from './project/edit-project/edit-project.component';
+import { EditProjectTypeComponent } from './projecttype/edit-project-type/edit-project-type.component';
+import { EditClientComponent } from './client/edit-client/edit-client.component';
+import { EditTeamComponent } from './team/edit-team/edit-team.component';
+import { EditTaskComponent } from './task/edit-task/edit-task.component';
+import { EditDepartementComponent } from './departement/edit-departement/edit-departement.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +52,19 @@ import { DetailProjectComponent } from './project/detail-project/detail-project.
     AddDepartementComponent,
     AddTaskComponent,
     ListTaskComponent,
-    DetailProjectComponent
+    DetailProjectComponent,
+    EditProjectComponent,
+    EditProjectTypeComponent,
+    EditClientComponent,
+    EditTeamComponent,
+    EditTaskComponent,
+    EditDepartementComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule,HttpClientModule
+    AppRoutingModule,
+    FormsModule,HttpClientModule, ReactiveFormsModule, FormsModule,
   ],
   providers: [ authInterceptorProviders  ],
   bootstrap: [AppComponent]

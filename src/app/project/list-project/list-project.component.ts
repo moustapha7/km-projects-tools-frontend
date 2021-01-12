@@ -17,7 +17,7 @@ export class ListProjectComponent implements OnInit {
 
 
   projects : Project[];
-  project :Project = new Project();
+  project :Project;
   clients : Client[];
   projectTypes : ProjectType[];
   statusProjects : StatusProject [];

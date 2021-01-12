@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   selectedDepartement : Departement;
   departements : Departement[];
 
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
