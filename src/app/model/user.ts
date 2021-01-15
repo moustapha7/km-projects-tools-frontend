@@ -9,7 +9,7 @@ export class User {
       role: string[];
       password: string;
       departement : Departement;
-  //  profileUser : string;
+    profileUser : string;
  
    
 }

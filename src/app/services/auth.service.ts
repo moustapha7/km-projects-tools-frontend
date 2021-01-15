@@ -56,12 +56,12 @@ export class AuthService {
     }, httpOptions);
   }
 
-  saveToken(jwt: string) {
+  /* saveToken(jwt: string) {
 
     localStorage.setItem('token',jwt);
     this.jwt = jwt;
     this.parseJWT();
-  }
+  } */
 
 
   loggedIn()
@@ -75,8 +75,9 @@ export class AuthService {
 
  
 
-
-
+ 
+/*
+  
   parseJWT()
   {
     let jwtHelper =  new  JwtHelperService();
@@ -84,8 +85,7 @@ export class AuthService {
     this.username = objJWT.obj;
     this.roles =  objJWT.roles;
   }
-
-  isAdmin()
+isAdmin()
   {
     return this.roles.indexOf('ADMIN')>0;
   }
@@ -108,7 +108,7 @@ export class AuthService {
 
 
 
-
+ */
 
 
    //list depertements

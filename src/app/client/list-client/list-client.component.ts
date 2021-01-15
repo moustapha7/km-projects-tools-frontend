@@ -31,7 +31,7 @@ export class ListClientComponent implements OnInit {
 
   updateClient(id : number)  {
  
-    this.router.navigate(['update-client', id]);
+    this.router.navigate(['edit-client', id]);
   }
 
   deleteClient(id :number) 

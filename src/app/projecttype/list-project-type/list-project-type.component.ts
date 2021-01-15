@@ -34,7 +34,7 @@ export class ListProjectTypeComponent implements OnInit {
 
 
 
-  deleteProduit(id :number)
+  deleteProjectType(id :number)
   {
 
     Swal.fire({

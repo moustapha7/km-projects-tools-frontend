@@ -12,9 +12,13 @@
                     <div>
                         <label> <b> Id : </b></label> {{user.id}}
                     </div>
+
+                    <div>
+                        <label> <b> First Name : </b></label> {{user.firstname}}
+                    </div>
                 
                     <div>
-                        <label> <b> Name : </b></label> {{user.name}}
+                        <label> <b> Last Name : </b></label> {{user.name}}
                     </div>
                     <div>
                         <label> <b> Username : </b></label>  {{user.username}}
@@ -22,12 +26,20 @@
                     <div>
                         <label> <b> Email : </b></label>  {{user.email}}
                     </div>
+
+                    <div>
+                        <label> <b> Role : </b></label>  {{user.profileUser}}
+                    </div>
+
+                    <div>
+                        <label> <b> Departement : </b></label>  {{user.departement.name}}
+                    </div>
                
                
         
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="list-user" routerLink="list-user">
+                <a class="btn btn-primary" href="list-user" routerLink="/list-user">
                     <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>retour
                 </a>
                 

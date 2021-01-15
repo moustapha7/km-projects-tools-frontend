@@ -35,7 +35,7 @@ export class AppComponent {
   ngOnInit(): void {
     
     this.currentUser = this.token.getUser();
-    this.authService.loadToken();
+   // this.authService.loadToken();
   
 
 
@@ -53,9 +53,7 @@ export class AppComponent {
 
       this.username = user.username;
       
-    }
-
-    
+    }  
    
   }
 
@@ -71,6 +69,6 @@ export class AppComponent {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
-    this.router.navigate[('login')];
+   
   }
 }

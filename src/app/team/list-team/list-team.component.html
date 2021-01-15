@@ -39,12 +39,16 @@
                         <tr *ngFor="let team of teams">
                             <td>{{team.id}}</td>
                             <td>{{team.name}}</td>
-                            <td>{{team.usertech.firstname}} {{team.usertech.name}}</td>
+                            <td>{{team.user.firstname}} {{team.user.name}}</td>
                             <td>{{team.description}}</td>
 
                             <td >
-                                <button   class="btn btn-success"  (click)="editTeam(team.id)"> edit </button>
-                                <button   class="btn btn-danger"  (click)="deleteTeam(team.id)" >delete</button>
+                                <button   class="btn btn-success"  (click)="editTeam(team.id)"> 
+                                    <i class="fa fa-edit"></i> edit 
+                                </button>
+                                <button   class="btn btn-danger"(click)="deleteTeam(team.id)" >
+                                    <i class="fa fa-trash"></i>  delete
+                                </button>
                             </td> 
                         </tr>
                        

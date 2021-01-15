@@ -53,6 +53,7 @@ export class AddProjectTypeComponent implements OnInit {
                 timer: 1500
                 
               });
+              this.router.navigate(['list-project-type']);
               console.log(result);
             },
              error => {
@@ -64,9 +65,10 @@ export class AddProjectTypeComponent implements OnInit {
                   timer: 1500
                   
                 });
+                this.router.navigate(['add-project-type']);
              }
           );
-        this.router.navigate(['add-project-type']);
+       
 
   }
 

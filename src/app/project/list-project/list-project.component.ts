@@ -7,6 +7,7 @@ import { StatusProject } from 'src/app/model/statusProject';
 import { Team } from 'src/app/model/team';
 import { User } from 'src/app/model/user';
 import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-project',
@@ -44,6 +45,42 @@ export class ListProjectComponent implements OnInit {
   projectDetails(id :number)
 	{
     this.routes.navigate(['detail-project',id]);
-	}
+  }
+  
+  editProject(id : number)  {
+ 
+    this.routes.navigate(['edit-project', id]);
+  }
 
+  deleteProject(id :number) 
+  {
+    Swal.fire({
+      title: `Voulez vous supprimer ce projet  ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    })
+    .then((result) => 
+    {
+      if (result.isConfirmed)
+      {
+        this.projectService.deleteProject(id).subscribe( data => {
+          console.log(data);
+          
+          Swal.fire(
+            'Deleted!',
+            'projet bien supprimé.',
+            'success'
+          )
+
+          this.listProjects();
+        });
+
+      }
+    })
+
+   
+  }
 }

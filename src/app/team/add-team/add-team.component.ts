@@ -17,53 +17,67 @@ export class AddTeamComponent implements OnInit {
 
 
   temas;
-  usertechs : User[];
+  userTeachs : User[];
   selectedTechLead : User;
 
   form: any = {};
   isSuccessful = false;
-  isAddFailed = false;
+  isAddProjectFailed = false;
   errorMessage = '';
 
 
   addForm : FormGroup;
-  team : Team;
 
-
+  team : Team = new Team();
   constructor(private teamService :TeamService, private userService : UserService, private router : Router, 
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.listusers();
+    this.addForm = this.formBuilder.group({
+  
+      name: new FormControl('',  Validators.minLength(4)),
+      description: new FormControl('',  Validators.minLength(4)),
+      user: new FormControl('',  Validators.minLength(4)),
+     
+    });
 
   }
 
 
-  saveTeam() :void
-  {
-      this.team = new Team(
-        this.form.name,
-        this.form.description,
-        this.form.usertech
-      );
 
-    this.team.usertech = this.selectedTechLead;
-    this.teamService.createTeam(this.team).subscribe(
+  saveTeam()
+  {
+    this.team.user = this.selectedTechLead;
+    this.teamService.createTeam(this.addForm.value).subscribe(
       data => {
 
-        this.isSuccessful = true;
-        this.isAddFailed = false;
+        
+          Swal.fire({
+            title: `team bien ajouté`,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+            
+          });
           this.router.navigate(['list-team']);
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isAddFailed = true;
-          this.router.navigate(['add-team']);
-        }
-         
-      );
-    
 
+        },
+         error => {
+            console.log('error to save team'); 
+            Swal.fire({
+              title: `error to save team`,
+              icon: 'warning',
+              showConfirmButton: false,
+              timer: 1500
+              
+            });
+            this.router.navigate(['add-team']);
+
+         }
+        
+      );
+   
         
       
     
@@ -73,7 +87,7 @@ export class AddTeamComponent implements OnInit {
   {
     this.userService.getAllUsers().subscribe(
       data =>{
-        this.usertechs =data;
+        this.userTeachs =data;
       }
     )
   }
