@@ -1,0 +1,26 @@
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card card-header card-primary"> <h5 class="card-title">Ajout Departement</h5></div>
+            <div class="card-body">
+               
+                <form [formGroup]="addForm" (ngSubmit)="saveDepartement()">
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+
+                            <label for="title">Name:</label>
+                            <input formControlName="name" id="name"  [(ngModel)]="departement.name" type="text" class="form-control" minlength="4" placeholder="nom du departement"
+                                maxlength="50" >
+                               
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        Save
+                    </button>
+                </form>
+               
+            </div>
+        </div>
+    </div> 

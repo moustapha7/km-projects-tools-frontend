@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card card-header">
+                <h5 class="card-title">Edit Project</h5>
+            </div>
+            <div class="card-body">
+
+
+                <form  [formGroup]="addForm" class="row g-3" (ngSubmit)="updateProject()">
+
+                    <div class="col-md-5">
+                        <label for="name">Name </label> 
+                        <input type="text" class="form-control" name="name" [(ngModel)]="project.name"  formControlName="name" id="name"
+                            minlength="3" maxlength="20"   />
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="email">Description</label>
+                        <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="project.description" formControlName="description"
+                            ></textarea>
+                
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="name">Date Début</label>
+                        <input type="date" class="form-control" name="dateDebut" [(ngModel)]="project.dateDebut" formControlName="dateDebut" id="dateDebut"
+                             />
+                       
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="name">Date Fin</label>
+                        <input type="date" class="form-control" name="dateFin" [(ngModel)]="project.dateFin" formControlName="dateFin" id="dateFin"
+                             />
+                        
+                    </div>
+
+
+                    <!--          ------------------------------------ table etrangére------------------------- -->
+
+                    <div class="col-md-5">
+                        <label>Choisir Team</label>
+                        <select class="form-control" id="team" name="team" [(ngModel)]="selectedTeam" formControlName="team"
+                             >
+                           
+                            <option *ngFor="let tea of teams" [ngValue]="tea"> {{tea.name}} </option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Client</label>
+                        <select class="form-control" id="client" name="client" [(ngModel)]="selectedClient" formControlName="client"
+                             >
+                           
+                            <option *ngFor="let cli of clients" [ngValue]="cli"> {{cli.prenom}} {{cli.nom}} </option>
+                        </select>
+                       
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Product Owner</label>
+                        <select class="form-control" id="userpo" name="userpo" [(ngModel)]="selectedUserpo" formControlName="userpo"
+                            >
+                          
+                            <option *ngFor="let po of userpos" [ngValue]="po"> {{po.name}} </option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Tech Lead</label>
+                        <select class="form-control" id="userteach" name="userteach" [(ngModel)]="selectedUserteach" formControlName="userteach"
+                           >
+                            
+                            <option *ngFor="let ust of userteachs" [ngValue]="ust"> {{ust.name}} </option>
+                        </select>
+                       
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Project Type </label>
+                        <select class="form-control" id="projectType" name="projectType" formControlName="projectType"
+                            [(ngModel)]="selectedProjectType" #projectType required projectType>
+                           
+                            <option *ngFor="let pt of projectTypes" [ngValue]="pt"> {{pt.name}} </option>
+                        </select>
+                       
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Status Project </label>
+                        <select class="form-control" id="statusProject" name="statusProject" formControlName="statusProject"
+                            [(ngModel)]="selectedStatusProject" #statusProject t>
+                            
+                            <option *ngFor="let stpr of statusProjects" [ngValue]="stpr"> {{stpr.name}} </option>
+                        </select>
+                       
+                    </div>
+
+
+                    <div class="col-md-5" >
+                        <button  class="btn btn-primary">Save</button>
+                    </div>
+
+                   
+                </form>
+
+
+            </div>
+            <div class="card-footer">
+                <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your add project is successful!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
