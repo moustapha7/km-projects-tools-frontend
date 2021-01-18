@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Project } from '../model/project';
@@ -40,6 +40,19 @@ export class ProjectService {
 
   deleteProject(id : number) : Observable<Object> {
     return this.http.delete(`${this.baseURL}/${id}`);
+  }
+
+
+
+  uploadPhotoProject(file: File, idProject): Observable<HttpEvent<{}>> {
+    let formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const req = new HttpRequest('POST', this.url+'/uploadPhotoProject/'+idProject, formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
   }
 
 

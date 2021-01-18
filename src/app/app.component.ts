@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { TokenStorageService } from './services/token-storage.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
 
   loggedUser : string;
 
-  constructor(private tokenStorageService: TokenStorageService, private token: TokenStorageService, 
+  constructor(private tokenStorageService: TokenStorageService, private token: TokenStorageService, public userService :UserService,
     private authService :AuthService, private router : Router) { }
 
 
@@ -69,6 +70,7 @@ export class AppComponent {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+    this.router.navigate[('login')];
    
   }
 }

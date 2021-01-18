@@ -71,7 +71,7 @@ const routes: Routes = [
   { path: 'edit-task/:id', component: EditTaskComponent, },
 
 
-  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
  // { path: '', pathMatch: 'full', redirectTo: '/login' },
 
   

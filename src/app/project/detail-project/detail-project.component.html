@@ -1,10 +1,22 @@
 <div class="row">
 
 
-    <div class="container">
+    <div  class="container">
 
 
         <div class="card card-header text-center"><strong>Project Details</strong></div>
+
+        <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
+        <button *ngIf="!editPhoto" (click)="onEditPhoto(project)">
+            <i class="fa fa-upload" aria-hidden="true"></i>Edit
+        </button>
+        <span *ngIf="editPhoto">
+            <input type="file" (change)="onSelectedFile($event)">
+            <button class="btn btn-success btn-sm" (click)="uploadPhoto()">
+                <span class="glyphicon glyphicon-upload">Upload</span>
+            </button>
+            {{progress}}
+        </span>
 
         <div id="d1">
             <div id="d11">

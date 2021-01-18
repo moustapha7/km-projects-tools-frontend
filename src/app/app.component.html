@@ -52,9 +52,8 @@
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">
             <strong>{{currentUser.username}}</strong>
          </span>   
-          <img class="img-profile rounded-circle"
-               src="assets/assetstemplate/assets/img/undraw_profile.svg">
-          
+          <img class="img-profile rounded-circle" height="50" src="{{this.userService.urlUser+'/photoUser/'+currentUser.id}}">
+              
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="profile" routerLink="profile">Profile</a>

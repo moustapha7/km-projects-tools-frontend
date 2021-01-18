@@ -18,7 +18,7 @@ export class TokenStorageService {
     window.sessionStorage.clear();
    // localStorage.removeItem(TOKEN_KEY);
    // localStorage.removeItem(USER_KEY);
-   this.router.navigate[('login')];
+   
   }
 
   public saveToken(token: string): void {
