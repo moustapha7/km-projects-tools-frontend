@@ -25,6 +25,9 @@ import { AddTeamComponent } from './team/add-team/add-team.component';
 import { EditTeamComponent } from './team/edit-team/edit-team.component';
 import { ListTeamComponent } from './team/list-team/list-team.component';
 import { DetailUserComponent } from './utilisateur/detail-user/detail-user.component';
+import { ListDeveloppeurComponent } from './utilisateur/list-developpeur/list-developpeur.component';
+import { ListProductOwnerComponent } from './utilisateur/list-product-owner/list-product-owner.component';
+import { ListTechLeadComponent } from './utilisateur/list-tech-lead/list-tech-lead.component';
 import { ListUsersComponent } from './utilisateur/list-users/list-users.component';
 
 
@@ -58,6 +61,10 @@ const routes: Routes = [
 
   {path : 'list-user', component : ListUsersComponent},
   { path: 'details-user/:id', component: DetailUserComponent },
+  {path : 'list-tech-lead', component : ListTechLeadComponent},
+  {path : 'list-developpeur', component : ListDeveloppeurComponent},
+  {path : 'list-product-owner', component : ListProductOwnerComponent},
+
  
   
 
@@ -71,7 +78,7 @@ const routes: Routes = [
   { path: 'edit-task/:id', component: EditTaskComponent, },
 
 
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
  // { path: '', pathMatch: 'full', redirectTo: '/login' },
 
   

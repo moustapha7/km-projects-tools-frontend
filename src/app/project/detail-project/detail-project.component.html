@@ -4,7 +4,11 @@
     <div  class="container">
 
 
-        <div class="card card-header text-center"><strong>Project Details</strong></div>
+        <div class="card card-header text-center"  [ngClass]="{'finished': project.statusProject.name == 'FINISHED',
+                 'ongoing': project.statusProject.name == 'ONGOING','suspended': project.statusProject.name == 'SUSPENDED', 
+                 'cancelled': project.statusProject.name == 'CANCELLED' }" >
+            <strong>Project Details</strong>
+        </div>
 
         <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
         <button *ngIf="!editPhoto" (click)="onEditPhoto(project)">
@@ -26,7 +30,7 @@
                     <p><strong>Date Début :</strong> {{project.dateDebut}}</p>
                     <p><strong>Date Fin :</strong> {{project.dateFin}} </p>
                     <p><strong>Estimation Jour :</strong> {{project.estimationJour}} jours </p>
-                    <p><strong>Estimation heure </strong> {{project.estimationHeure}} heures </p>
+                    <p><strong>Estimation heure :</strong> {{project.estimationHeure}} heures </p>
 
              
             </div>

@@ -18,6 +18,10 @@ export class UserService {
   private pmUrl = 'http://localhost:8080/api/test/pm';
   private adminUrl = 'http://localhost:8080/api/test/admin';
 
+  public urlUserActif: string = 'http://localhost:8080/api/activeUser';
+
+  public urlUserDesActif: string = 'http://localhost:8080/api/desactiveUser';
+
   constructor(private http: HttpClient) { }
 
   getUserBoard(): Observable<string> {
@@ -66,6 +70,13 @@ export class UserService {
   }
 
 
+   activeCompteUser(id:number, user: User): Observable<Object> {
+    return this.http.put(`${this.urlUserActif}/${id}`,user);
+  }
+
+  desactiveCompteUser(id:number, user: User): Observable<Object> {
+    return this.http.put(`${this.urlUserDesActif}/${id}`, user);
+  }
  
 
 

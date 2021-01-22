@@ -1,9 +1,20 @@
-table span.highlight {
+table span.active {
     background-color: #4CAF50 !important;
     color: #ffffff;
 }
 
-table span.noactif {
+table span.noactive {
     background-color: red !important;
     color: #ffffff;
 }
+
+
+.disabled {
+    display:none
+  }
+
+  .abled {
+ 
+    display:inline-block
+  }
+  

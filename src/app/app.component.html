@@ -30,7 +30,7 @@
 
 
   <nav *ngIf="!!isLoggedIn" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">{{title}}</a>
+    <a class="navbar-brand" href="dashboard" routerLink="/dashboard">{{title}}</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
         class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -76,7 +76,7 @@
            
 
             <!--  mon Menu principal-->
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="dashboard" routerLink="/dashboard">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
@@ -116,6 +116,25 @@
                   <i class="fas fa-fw fa-table"></i>
                   <span>Utilisateurs</span></a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="list-product-owner" routerLink="list-product-owner" >
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Product Owner</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="list-tech-lead" routerLink="list-tech-lead" >
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Tech Lead</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="list-developpeur" routerLink="list-developpeur" >
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Développeur</span></a>
+            </li>
+
 
             <li class="nav-item">
               <a class="nav-link" href="list-departement" routerLink="list-departement" >

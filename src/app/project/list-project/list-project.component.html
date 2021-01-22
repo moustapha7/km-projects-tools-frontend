@@ -1,53 +1,73 @@
-
-  <li class="nav-item">
-    <a href="add-project"  class="btn btn-primary align-right" routerLink="/add-project"> new project</a>
+<li class="nav-item">
+    <a href="add-project" class="btn btn-primary align-right" routerLink="/add-project"> new project</a>
 </li>
 
-<div *ngIf="projects" class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row">
 
 
-    <div *ngFor="let project of projects" class="col">
-        <div class="card h-100">
+    <div class="container">
 
-           
+        <div class="card card-header text-center"> 
+            <h6 class="m-0 font-weight-bold text-primary">
+                <button (click)="listProjects()" class="btn btn-primary"><i class="fa fa-sync-alt"></i></button> Projects List 
+            </h6> 
+        </div>
+        <div class="card-body">
+            <div *ngIf="projects" class="row row-cols-1 row-cols-md-3 g-4 ">
 
-            <div class="card card-header"><strong>{{project.name}}</strong></div>
-            <div class="card-body">
 
-                <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
+                <div *ngFor="let project of projects" class="col">
 
-            
-                    <button (click)="onEditPhoto(project)" class="btn btn-warning">
-                        <i class="fa fa-upload" aria-hidden="true"></i>Edit
-                    </button>
-    
-                    <p *ngIf="editPhoto && currentProject==project">
-                        <input type="file" (change)="onSelectedFile($event)">
-                        <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
-                        {{progress}}
-                    </p>
-            
+                    <div class="card h-100">
 
-                <p><strong>Team :</strong> {{project.team.name}} </p>
-                <p><strong>Product Owner :</strong> {{project.userpo.name}} {{project.userpo.firstname}}</p>
-                <p><strong>Teach Lead :</strong> {{project.userteach.name}} {{project.userteach.firstname}}</p>
-            </div>
-            <div class="card-footer" align="center">
-                <button class="btn btn-primary" (click)="projectDetails(project.id)">
-                    <i class="fa fa-eye"></i>
-                </button>
+                        <div class="card card-header"
+                            [ngClass]="{'finished': project.statusProject.name == 'FINISHED', 'ongoing': project.statusProject.name == 'ONGOING',
+                                 'suspended': project.statusProject.name == 'SUSPENDED', 'cancelled': project.statusProject.name == 'CANCELLED' }">
+                            <strong>{{project.name}}</strong>
+                        </div>
+                        <div class="card-body">
 
-                <button class="btn btn-success" (click)="editProject(project.id)">
-                    <i class="fa fa-edit" ></i>
-                </button>
+                            <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
 
-                <button  class="btn btn-danger" (click)="deleteProject(project.id)">
-                    <i class="fa fa-trash"></i>
-                </button>
+
+                            <button (click)="onEditPhoto(project)" class="btn btn-warning">
+                                <i class="fa fa-upload" aria-hidden="true"></i>Edit
+                            </button>
+
+                            <p *ngIf="editPhoto && currentProject==project">
+                                <input type="file" (change)="onSelectedFile($event)">
+                                <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                                {{progress}}
+                            </p>
+
+
+                            <p><strong>Team :</strong> {{project.team.name}} </p>
+                            <p><strong>Product Owner :</strong> {{project.userpo.name}} {{project.userpo.firstname}}</p>
+                            <p><strong>Teach Lead :</strong> {{project.userteach.name}} {{project.userteach.firstname}}
+                            </p>
+                            <p><strong>Etat Projet :</strong> {{project.statusProject.name}}</p>
+                        </div>
+                        <div class="card-footer" align="center">
+                            <button class="btn btn-primary" (click)="projectDetails(project.id)">
+                                <i class="fa fa-eye"></i>
+                            </button>
+
+                            <button class="btn btn-success" (click)="editProject(project.id)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+
+                            <button class="btn btn-danger" (click)="deleteProject(project.id)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
+        <div class="card-footer" align="center">
+
+        </div>
     </div>
-
-
-
 </div>

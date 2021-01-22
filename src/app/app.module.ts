@@ -31,6 +31,10 @@ import { EditTeamComponent } from './team/edit-team/edit-team.component';
 import { EditTaskComponent } from './task/edit-task/edit-task.component';
 import { EditDepartementComponent } from './departement/edit-departement/edit-departement.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListTechLeadComponent } from './utilisateur/list-tech-lead/list-tech-lead.component';
+import { ListProductOwnerComponent } from './utilisateur/list-product-owner/list-product-owner.component';
+import { ListDeveloppeurComponent } from './utilisateur/list-developpeur/list-developpeur.component';
+import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EditTeamComponent,
     EditTaskComponent,
     EditDepartementComponent,
-    DashboardComponent
+    DashboardComponent,
+     ListTechLeadComponent,
+    ListProductOwnerComponent,
+     ListDeveloppeurComponent,
+     RegisterConfirmComponent
   ],
   imports: [
     BrowserModule,

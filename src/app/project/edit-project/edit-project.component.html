@@ -41,7 +41,7 @@
 
                     <div class="col-md-5">
                         <label>Choisir Team</label>
-                        <select class="form-control" id="team" name="team" [(ngModel)]="selectedTeam" formControlName="team"
+                        <select class="form-control" id="team" [(ngModel)]="selectedTeam" formControlName="team"
                              >
                            
                             <option *ngFor="let tea of teams" [ngValue]="tea"> {{tea.name}} </option>
@@ -61,8 +61,7 @@
 
                     <div class="col-md-5">
                         <label>Product Owner</label>
-                        <select class="form-control" id="userpo" name="userpo" [(ngModel)]="selectedUserpo" formControlName="userpo"
-                            >
+                        <select class="form-control" id="userpo" name="userpo" [(ngModel)]="selectedUserpo" formControlName="userpo"  >
                           
                             <option *ngFor="let po of userpos" [ngValue]="po"> {{po.name}} </option>
                         </select>

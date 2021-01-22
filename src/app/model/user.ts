@@ -10,6 +10,7 @@ export class User {
       password: string;
       departement : Departement;
     profileUser : string;
+    activated : Boolean;
  
    
 }

@@ -36,6 +36,9 @@ export class ListProjectComponent implements OnInit {
   title:string;
   currentTime: number;
 
+  
+  selectedTeam :Team;
+
 
   constructor(private projectService : ProjectService, private routes: Router) { }
 
@@ -60,6 +63,18 @@ export class ListProjectComponent implements OnInit {
   editProject(id : number)  {
  
     this.routes.navigate(['edit-project', id]);
+
+    this.project.team = this.teams.filter(
+      c=> c.id === this.project.team.id
+    )[0];
+    
+   /*  this.teams.forEach(tea => {
+      if(tea.id === this.project.team.id)
+      {
+        this.selectedTeam = tea;
+      }
+    })
+ */
   }
 
   deleteProject(id :number) 

@@ -5,3 +5,23 @@
   #d11 {
     float: right;
   }
+
+  div.finished {
+    background-color: #4CAF50 !important;
+    color: #ffffff;
+}
+
+div.ongoing {
+    background-color: #1d6ce4 !important;
+    color: #ffffff;
+}
+
+div.suspended {
+    background-color: #aaaaa9 !important;
+    color: #ffffff;
+}
+
+div.cancelled {
+    background-color: #fa0909 !important;
+    color: #ffffff;
+}

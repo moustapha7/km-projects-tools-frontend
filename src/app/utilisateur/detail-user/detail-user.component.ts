@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class DetailUserComponent implements OnInit {
 
   id:number;
   user : User;
-  constructor(private acroute: ActivatedRoute,  public userService :UserService) { }
+  currentUser: any;
+  constructor(private acroute: ActivatedRoute,  public userService :UserService, private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.id= this.acroute.snapshot.params['id'];
+    this.currentUser = this.token.getUser();
 
     this.user = new User();
     this.userService.getUserById(this.id).subscribe(data => {

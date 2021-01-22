@@ -75,7 +75,7 @@ export class EditProjectComponent implements OnInit {
       this.addForm = this.formBuilder.group({
         name: new FormControl('', Validators.minLength(4)),
         description: new FormControl('', Validators.minLength(4)),
-        dateDebut:  new FormControl('', Validators.required),
+        dateDebut:  new FormControl( (new Date()).toISOString().substring(0,10), Validators.required),
         dateFin:  new FormControl('', Validators.minLength(4)),
       //  estimationJour :  new FormControl('', Validators.minLength(4)),
        // estimationHeure :  new FormControl('', Validators.minLength(4)),
@@ -91,7 +91,7 @@ export class EditProjectComponent implements OnInit {
 
  updateProject(): void {
 
-    
+   
     this.project.team = this.selectedTeam;
     this.project.client = this.selectedClient;
     this.project.userpo = this.selectedUserpo;

@@ -63,7 +63,7 @@
                         <select class="form-control" id="userpo" name="userpo" [(ngModel)]="selectedUserpo" formControlName="userpo"
                             >
                           
-                            <option *ngFor="let po of userpos" [ngValue]="po"> {{po.name}} </option>
+                            <option *ngFor="let po of userpos" [ngValue]="po">  {{po.firstname}} {{po.name}} </option>
                         </select>
                         
                     </div>
@@ -73,7 +73,7 @@
                         <select class="form-control" id="userteach" name="userteach" [(ngModel)]="selectedUserteach" formControlName="userteach"
                            >
                             
-                            <option *ngFor="let ust of userteachs" [ngValue]="ust"> {{ust.name}} </option>
+                            <option *ngFor="let ust of userteachs" [ngValue]="ust"> {{ust.firstname}} {{ust.name}} </option>
                         </select>
                        
                     </div>

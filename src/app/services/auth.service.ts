@@ -33,6 +33,7 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signin', {
       username: credentials.username,
       password: credentials.password
+      
     }, httpOptions);
   }
 
@@ -43,7 +44,8 @@ export class AuthService {
       username: user.username,
       departement : user.departement,
       email: user.email,
-      password: user.password
+      password: user.password,
+      confirmPassword : user.confirmPassword
     }, httpOptions);
   }
 
