@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div  class="container-fluid">
 
     <!-- Page Heading -->
 
@@ -17,12 +17,12 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Photo</th>
                             <th>Active</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Roles</th>
                             <th>Departement</th>
                             <th>Action</th>
                         
@@ -31,12 +31,12 @@
                     <tfoot>
                         <tr>
                             <th>Id</th>
+                            <th>Photo</th>
                             <th>Active</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Username</th>
                             <th>Email</th>  
-                            <th>Roles</th> 
                             <th>Departement</th>                     
                            <div class="text-center"><th >Action</th> </div> 
                         </tr>
@@ -44,16 +44,17 @@
                     <tbody>
                         <tr *ngFor="let user of users">
                             <td>{{user.id}}</td>
+                            <td>  <img class="img-profile rounded-circle" height="50" src="{{this.userService.urlUser+'/photoUser/'+user.id}}" /></td>
                             <td ><span  [ngClass]="{'active':user.activated ==true , 'noactive':user.activated ==false}">{{user.activated}}</span></td>
                             <td>{{user.firstname}}</td>
                             <td>{{user.name}}</td>
                             <td>{{user.username}}</td>
                             <td>{{user.email}}</td> 
-                            <td>{{user.profileUser}}</td> 
+                         <!--    <td>{{user.profileUser}}</td>  -->
                             <td>{{user.departement.name}}</td>   
 
                             <td >
-                                <button  *ngIf="showAdminBoard || showUserBoard"  class="btn btn-primary"  (click)="userDetails(user.id)">
+                                <button    class="btn btn-primary"  (click)="userDetails(user.id)">
                                     <i class="fa fa-eye"></i> 
                                     
                                </button>
@@ -62,11 +63,11 @@
                                     <i class="fa fa-trash"></i>
                                 </button>
                            
-                                <button class="btn btn-success"  [ngClass]="{'disabled':user.activated ==true , 'abled':user.activated ==false}"
+                                <button  *ngIf="showAdminBoard"  class="btn btn-success"  [ngClass]="{'disabled':user.activated ==true , 'abled':user.activated ==false}"
                                  (click)="activerCompte(user.id)">
                                     active
                                 </button>
-                                <button class="btn btn-warning"   [ngClass]="{'disabled':user.activated ==false , 'abled':user.activated ==true}"
+                                <button *ngIf="showAdminBoard"   class="btn btn-warning"   [ngClass]="{'disabled':user.activated ==false , 'abled':user.activated ==true}"
                                 
                                 (click)="desactiverCompte(user.id)">
                                     desactive
@@ -82,3 +83,6 @@
 
 </div>
 <!-- /.container-fluid -->
+<ng-template #loggedOut>
+    Please login.
+  </ng-template>

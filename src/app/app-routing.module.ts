@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { AddClientComponent } from './client/add-client/add-client.component';
 import { EditClientComponent } from './client/edit-client/edit-client.component';
 import { ListClientComponent } from './client/list-client/list-client.component';
+import { CommentsComponent } from './commentaire/comments/comments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddDepartementComponent } from './departement/add-departement/add-departement.component';
 import { EditDepartementComponent } from './departement/edit-departement/edit-departement.component';
@@ -76,6 +77,8 @@ const routes: Routes = [
   {path : 'list-task', component : ListTaskComponent},
   {path : 'add-task', component : AddTaskComponent},
   { path: 'edit-task/:id', component: EditTaskComponent, },
+
+  { path: 'comments', component: CommentsComponent, },
 
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

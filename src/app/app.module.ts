@@ -35,6 +35,7 @@ import { ListTechLeadComponent } from './utilisateur/list-tech-lead/list-tech-le
 import { ListProductOwnerComponent } from './utilisateur/list-product-owner/list-product-owner.component';
 import { ListDeveloppeurComponent } from './utilisateur/list-developpeur/list-developpeur.component';
 import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
+import { CommentsComponent } from './commentaire/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { RegisterConfirmComponent } from './register-confirm/register-confirm.co
      ListTechLeadComponent,
     ListProductOwnerComponent,
      ListDeveloppeurComponent,
-     RegisterConfirmComponent
+     RegisterConfirmComponent,
+     CommentsComponent
   ],
   imports: [
     BrowserModule,

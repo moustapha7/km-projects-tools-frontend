@@ -1,7 +1,10 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Commentaire } from 'src/app/model/commentaire';
 import { Project } from 'src/app/model/project';
+import { CommentaireService } from 'src/app/services/commentaire.service';
 import { ProjectService } from 'src/app/services/project.service';
 import Swal from 'sweetalert2';
 
@@ -22,8 +25,11 @@ export class DetailProjectComponent implements OnInit {
   currentFileUpload: any;
   title:string;
   currentTime: number;
+  selectedProject : Project;
 
-  constructor(private acroute: ActivatedRoute, public projectService : ProjectService, private routes : Router) { }
+ 
+  constructor(private acroute: ActivatedRoute, public projectService : ProjectService, private routes : Router, 
+    private formBuilder : FormBuilder, private comService : CommentaireService) { }
 
   ngOnInit(): void {
     this.id= this.acroute.snapshot.params['id'];
@@ -31,7 +37,15 @@ export class DetailProjectComponent implements OnInit {
   //  this.project = new Project();
     this.projectService.getProjectById(this.id).subscribe(data => {
       this.project = data;
-    })
+    });
+
+
+
+  
+   /*  this.commentForm = this.formBuilder.group({
+      project : new FormControl(''),
+      content: new FormControl('', Validators.minLength(2)),
+    }) */
     
   }
   editProject(id : number)  {

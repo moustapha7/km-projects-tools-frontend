@@ -14,9 +14,10 @@ import Swal from 'sweetalert2';
 export class ListUsersComponent implements OnInit {
 
 
-  users;
+  users ;
   currentUser: any;
   isLoggedIn = true;
+  isconnected = false;
 
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -38,6 +39,7 @@ export class ListUsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.currentUser = this.token.getUser();
+  
     this.listUsers();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -56,6 +58,20 @@ export class ListUsersComponent implements OnInit {
     }
   }
 
+
+ /*  isCurrentConnected()
+  {
+    this.users.forEach(element => {
+      if(element.username === this.currentUser.username)
+      {
+        this.isconnected = true;
+      }
+
+      
+    });
+  } */
+ 
+ 
   listUsers()
 	{
 		this.userService.getAllUsers().subscribe(

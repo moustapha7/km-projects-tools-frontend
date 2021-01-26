@@ -1,12 +1,12 @@
 <div class="row">
 
 
-    <div  class="container">
+    <div class="container">
 
 
-        <div class="card card-header text-center"  [ngClass]="{'finished': project.statusProject.name == 'FINISHED',
+        <div class="card card-header text-center" [ngClass]="{'finished': project.statusProject.name == 'FINISHED',
                  'ongoing': project.statusProject.name == 'ONGOING','suspended': project.statusProject.name == 'SUSPENDED', 
-                 'cancelled': project.statusProject.name == 'CANCELLED' }" >
+                 'cancelled': project.statusProject.name == 'CANCELLED' }">
             <strong>Project Details</strong>
         </div>
 
@@ -24,29 +24,29 @@
 
         <div id="d1">
             <div id="d11">
-               
-                    <p><strong>N°  :</strong> {{project.id}} </p>
-                    <p><strong>Name :</strong> {{project.name}} </p>
-                    <p><strong>Date Début :</strong> {{project.dateDebut}}</p>
-                    <p><strong>Date Fin :</strong> {{project.dateFin}} </p>
-                    <p><strong>Estimation Jour :</strong> {{project.estimationJour}} jours </p>
-                    <p><strong>Estimation heure :</strong> {{project.estimationHeure}} heures </p>
 
-             
+                <p><strong>N° :</strong> {{project.id}} </p>
+                <p><strong>Name :</strong> {{project.name}} </p>
+                <p><strong>Date Début :</strong> {{project.dateDebut}}</p>
+                <p><strong>Date Fin :</strong> {{project.dateFin}} </p>
+                <p><strong>Estimation Jour :</strong> {{project.estimationJour}} jours </p>
+                <p><strong>Estimation heure :</strong> {{project.estimationHeure}} heures </p>
+
+
             </div>
             <div id="d12">
 
-                
-                    <p><strong>Team :</strong> {{project.team.name}} </p>
-                    <p><strong>Product Owner :</strong> {{project.userpo.name}} {{project.userpo.firstname}}</p>
-                    <p><strong>Teach Lead :</strong> {{project.userteach.name}} {{project.userteach.firstname}}</p>
-                    <p><strong>Client  :</strong> {{project.client.nom}} {{project.client.prenom}}</p>
-                    <p><strong>Type de Projet :</strong> {{project.projectType.name}}</p>
-                    <p><strong>Etat Projet :</strong> {{project.statusProject.name}}</p>
+
+                <p><strong>Team :</strong> {{project.team.name}} </p>
+                <p><strong>Product Owner :</strong> {{project.userpo.name}} {{project.userpo.firstname}}</p>
+                <p><strong>Teach Lead :</strong> {{project.userteach.name}} {{project.userteach.firstname}}</p>
+                <p><strong>Client :</strong> {{project.client.nom}} {{project.client.prenom}}</p>
+                <p><strong>Type de Projet :</strong> {{project.projectType.name}}</p>
+                <p><strong>Etat Projet :</strong> {{project.statusProject.name}}</p>
             </div>
             <p>
                 <strong>Description :</strong>
-               {{project.description}} 
+                {{project.description}}
             </p>
         </div>
 
@@ -56,16 +56,23 @@
         <div class="card-footer" align="center">
 
             <button class="btn btn-success" (click)="editProject(project.id)">
-                <i class="fa fa-edit" ></i>
+                <i class="fa fa-edit"></i>
             </button>
 
-            <button  class="btn btn-danger" (click)="deleteProject(project.id)">
+            <button class="btn btn-danger" (click)="deleteProject(project.id)">
                 <i class="fa fa-trash"></i>
             </button>
         </div>
 
     </div>
-
-
-
 </div>
+
+
+
+
+
+
+
+
+
+<app-comments></app-comments>
