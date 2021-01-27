@@ -30,7 +30,7 @@
                             <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
 
 
-                            <button (click)="onEditPhoto(project)" class="btn btn-warning">
+                            <button  *ngIf="isPOwner" (click)="onEditPhoto(project)" class="btn btn-warning">
                                 <i class="fa fa-upload" aria-hidden="true"></i>Edit
                             </button>
 
@@ -48,15 +48,15 @@
                             <p><strong>Etat Projet :</strong> {{project.statusProject.name}}</p>
                         </div>
                         <div class="card-footer" align="center">
-                            <button class="btn btn-primary" (click)="projectDetails(project.id)">
+                            <button  class="btn btn-primary" (click)="projectDetails(project.id)">
                                 <i class="fa fa-eye"></i>
                             </button>
 
-                            <button class="btn btn-success" (click)="editProject(project.id)">
+                            <button  *ngIf="isPOwner" class="btn btn-success" (click)="editProject(project.id)">
                                 <i class="fa fa-edit"></i>
                             </button>
 
-                            <button class="btn btn-danger" (click)="deleteProject(project.id)">
+                            <button  *ngIf="isPOwner" class="btn btn-danger" (click)="deleteProject(project.id)">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </div>

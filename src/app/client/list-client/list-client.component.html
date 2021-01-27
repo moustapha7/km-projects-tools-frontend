@@ -5,7 +5,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <li class="nav-item">
+        <li *ngIf="isPOwner" class="nav-item">
             <a href="add-client"  class="btn btn-primary align-right"  routerLink="/add-client"> Nouveau Client</a>
         </li>
         <div class="card-header py-3">
@@ -51,10 +51,13 @@
                             <th>{{item.tel}}</th>
                             
                             <td>
-                                <button class="btn btn-primary"  (click)="updateClient(item.id)">
+                                <button class="btn btn-primary" (click)="detailClient(item.id)">
+                                    <i class="fas fa-eye"></i> 
+                                </button>
+                                <button *ngIf="isPOwner" class="btn btn-success"  (click)="updateClient(item.id)">
                                   <i class="fas fa-edit"></i> 
                                 </button>
-                                <button class="btn btn-danger" (click)="deleteClient(item.id)">
+                                <button  *ngIf="isPOwner" class="btn btn-danger" (click)="deleteClient(item.id)">
                                     <i class="fas fa-trash"></i> 
                                 </button>
                                

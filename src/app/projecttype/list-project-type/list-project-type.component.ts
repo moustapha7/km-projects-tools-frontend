@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectTypeService } from 'src/app/services/project-type.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,10 +12,33 @@ import Swal from 'sweetalert2';
 export class ListProjectTypeComponent implements OnInit {
 
   projectTypes;
-  constructor(private proTypeService :ProjectTypeService, private router : Router) { }
+
+  isAdmin = false;
+  isDev = false;
+  isPOwner = false ;
+  isTechLead = false;
+  isLoggedIn = true;
+  private roles: string[];
+  constructor(private proTypeService :ProjectTypeService, private router : Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this. listProjectType();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //  this.isConnecte = this.tokenStorageService.getToken();
+  
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+
+        this.isAdmin =this.roles.includes('ROLE_ADMIN');
+        this.isDev =this.roles.includes('ROLE_DEV');
+        this.isTechLead =this.roles.includes('ROLE_TEACHLEAD');
+        this.isPOwner =this.roles.includes('ROLE_POWNER');
+  
+
+        
+      }  
   }
 
   listProjectType(){

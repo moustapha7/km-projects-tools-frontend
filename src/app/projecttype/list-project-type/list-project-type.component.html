@@ -5,7 +5,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <li class="nav-item">
+        <li *ngIf="isTechLead || isPOwner" class="nav-item">
             <a href="add-project-type"  class="btn btn-primary align-right" routerLink="/add-project-type"> New Project Type</a>
         </li>
         <div class="card-header py-3">
@@ -19,7 +19,7 @@
                         <tr>
                             <th scope="col">id</th>
                             <th scope="col">Name</th>
-                            <th class="text-center" scope="col">Action</th>
+                            <th  *ngIf="isTechLead || isPOwner" class="text-center" scope="col">Action</th>
                         
                         </tr>
                     </thead>
@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="col">id</th>
                             <th scope="col">Name</th>
-                            <th class="text-center" scope="col">Action</th>
+                            <th *ngIf="isTechLead || isPOwner" class="text-center" scope="col">Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -35,10 +35,10 @@
                             <th>{{item.id}}</th>
                             <th>{{item.name}}</th>
                             <td>
-                                <button class="btn btn-primary"  (click)="editProjectType(item.id)">
+                                <button  *ngIf="isTechLead || isPOwner" class="btn btn-primary"  (click)="editProjectType(item.id)">
                                    <i class="fa fa-edit"></i> edit
                                 </button>
-                                <button class="btn btn-danger" (click)="deleteProjectType(item.id)">
+                                <button *ngIf="isTechLead || isPOwner" class="btn btn-danger" (click)="deleteProjectType(item.id)">
                                     <i class="fa fa-trash"></i>delete
                                 </button>
                                

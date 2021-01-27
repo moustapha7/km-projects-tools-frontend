@@ -6,6 +6,7 @@ import { Commentaire } from 'src/app/model/commentaire';
 import { Project } from 'src/app/model/project';
 import { CommentaireService } from 'src/app/services/commentaire.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -27,9 +28,15 @@ export class DetailProjectComponent implements OnInit {
   currentTime: number;
   selectedProject : Project;
 
+  isAdmin = false;
+  isDev = false;
+  isPOwner = false ;
+  isTechLead = false;
+  isLoggedIn = true;
+  private roles: string[];
  
   constructor(private acroute: ActivatedRoute, public projectService : ProjectService, private routes : Router, 
-    private formBuilder : FormBuilder, private comService : CommentaireService) { }
+    private formBuilder : FormBuilder, private comService : CommentaireService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.id= this.acroute.snapshot.params['id'];
@@ -42,12 +49,25 @@ export class DetailProjectComponent implements OnInit {
 
 
   
-   /*  this.commentForm = this.formBuilder.group({
-      project : new FormControl(''),
-      content: new FormControl('', Validators.minLength(2)),
-    }) */
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //  this.isConnecte = this.tokenStorageService.getToken();
+  
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+  
+  
+        this.isAdmin =this.roles.includes('ROLE_ADMIN');
+        this.isDev =this.roles.includes('ROLE_DEV');
+        this.isTechLead =this.roles.includes('ROLE_TEACHLEAD');
+        this.isPOwner =this.roles.includes('ROLE_POWNER');
+  
+
+        
+      }  
     
   }
+  
   editProject(id : number)  {
  
     this.routes.navigate(['edit-project', id]);

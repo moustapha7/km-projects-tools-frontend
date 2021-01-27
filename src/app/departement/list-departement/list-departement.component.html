@@ -5,7 +5,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <li class="nav-item">
+        <li  *ngIf="isAdmin" class="nav-item">
             <a href="add-departement"  class="btn btn-primary align-right"  routerLink="/add-departement"> Nouveau departement</a>
         </li>
         <div class="card-header py-3">
@@ -18,7 +18,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Action</th>
+                            <th  *ngIf="isAdmin">Action</th>
                         
                         </tr>
                     </thead>
@@ -26,14 +26,14 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Action</th>
+                            <th  *ngIf="isAdmin">Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <tr *ngFor="let depa of departements">
                             <td>{{depa.id}}</td>
                             <td>{{depa.name}}</td>
-                            <td >
+                            <td  *ngIf="isAdmin">
                                 <button   class="btn btn-success"  (click)="updateDepartement(depa.id)">
                                     <i class="fa fa-edit"></i> edit
                                 </button>

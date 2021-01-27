@@ -36,6 +36,7 @@ import { ListProductOwnerComponent } from './utilisateur/list-product-owner/list
 import { ListDeveloppeurComponent } from './utilisateur/list-developpeur/list-developpeur.component';
 import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
 import { CommentsComponent } from './commentaire/comments/comments.component';
+import { DetailClientComponent } from './client/detail-client/detail-client.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { CommentsComponent } from './commentaire/comments/comments.component';
     ListProductOwnerComponent,
      ListDeveloppeurComponent,
      RegisterConfirmComponent,
-     CommentsComponent
+     CommentsComponent,
+     DetailClientComponent
   ],
   imports: [
     BrowserModule,

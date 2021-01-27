@@ -59,15 +59,15 @@
                                     
                                </button>
 
-                                <button  *ngIf="showAdminBoard"  class="btn btn-danger" > 
+                                <button  *ngIf="isAdmin"  class="btn btn-danger" > 
                                     <i class="fa fa-trash"></i>
                                 </button>
                            
-                                <button  *ngIf="showAdminBoard"  class="btn btn-success"  [ngClass]="{'disabled':user.activated ==true , 'abled':user.activated ==false}"
+                                <button  *ngIf="isAdmin"  class="btn btn-success"  [ngClass]="{'disabled':user.activated ==true , 'abled':user.activated ==false}"
                                  (click)="activerCompte(user.id)">
                                     active
                                 </button>
-                                <button *ngIf="showAdminBoard"   class="btn btn-warning"   [ngClass]="{'disabled':user.activated ==false , 'abled':user.activated ==true}"
+                                <button *ngIf="isAdmin"   class="btn btn-warning"   [ngClass]="{'disabled':user.activated ==false , 'abled':user.activated ==true}"
                                 
                                 (click)="desactiverCompte(user.id)">
                                     desactive

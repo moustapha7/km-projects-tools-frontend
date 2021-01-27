@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/model/client';
 import { ClientService } from 'src/app/services/client.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,10 +14,35 @@ export class ListClientComponent implements OnInit {
 
   client : Client;
   clients : Client[];
-  constructor(public clientService: ClientService, private router : Router) { }
+
+  isAdmin = false;
+  isDev = false;
+  isPOwner = false ;
+  isTechLead = false;
+  isLoggedIn = true;
+  private roles: string[];
+ 
+  constructor(public clientService: ClientService, private router : Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.listClients();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //  this.isConnecte = this.tokenStorageService.getToken();
+  
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+  
+  
+        this.isAdmin =this.roles.includes('ROLE_ADMIN');
+        this.isDev =this.roles.includes('ROLE_DEV');
+        this.isTechLead =this.roles.includes('ROLE_TEACHLEAD');
+        this.isPOwner =this.roles.includes('ROLE_POWNER');
+  
+
+        
+      }  
   }
 
   listClients()
@@ -27,6 +53,11 @@ export class ListClientComponent implements OnInit {
       }
     )
     
+  }
+
+  detailClient(id :number)
+  {
+    this.router.navigate(['detail-client',id]);
   }
 
   updateClient(id : number)  {

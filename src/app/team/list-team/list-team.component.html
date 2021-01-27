@@ -4,7 +4,7 @@
     <!-- Page Heading -->
 
     <!-- DataTales Example -->
-    <li class="nav-item">
+    <li *ngIf="isTechLead" class="nav-item">
         <a href="add-team"  class="btn btn-primary align-right"  routerLink="/add-team" > new team</a>
     </li>
     <div class="card shadow mb-4">
@@ -22,7 +22,7 @@
                             <th>Name</th>
                             <th>Teach Lead</th>
                             <th>Description</th>
-                            <th>Action</th>
+                            <th  *ngIf="isTechLead">Action</th>
                         
                         </tr>
                     </thead>
@@ -32,7 +32,7 @@
                             <th>Name</th>
                             <th>Teach Lead</th>
                             <th>Description</th>
-                            <th>Action</th>
+                            <th *ngIf="isTechLead">Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -43,10 +43,10 @@
                             <td>{{team.description}}</td>
 
                             <td >
-                                <button   class="btn btn-success"  (click)="editTeam(team.id)"> 
+                                <button  *ngIf="isTechLead"   class="btn btn-success"  (click)="editTeam(team.id)"> 
                                     <i class="fa fa-edit"></i> edit 
                                 </button>
-                                <button   class="btn btn-danger"(click)="deleteTeam(team.id)" >
+                                <button  *ngIf="isTechLead"  class="btn btn-danger"(click)="deleteTeam(team.id)" >
                                     <i class="fa fa-trash"></i>  delete
                                 </button>
                             </td> 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Team } from 'src/app/model/team';
 import { User } from 'src/app/model/user';
 import { TeamService } from 'src/app/services/team.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -18,12 +19,35 @@ export class ListTeamComponent implements OnInit {
 
   users : User[];
 
+  isAdmin = false;
+  isDev = false;
+  isPOwner = false ;
+  isTechLead = false;
+  isLoggedIn = true;
+  private roles: string[];
 
-  constructor(public teamService: TeamService, private router : Router, private userService :UserService) { }
+  constructor(public teamService: TeamService, private tokenStorageService: TokenStorageService,
+                  private router : Router, private userService :UserService) { }
 
   ngOnInit(): void {
     this.listTeams();
     this.listUsers();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //  this.isConnecte = this.tokenStorageService.getToken();
+  
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+
+        this.isAdmin =this.roles.includes('ROLE_ADMIN');
+        this.isDev =this.roles.includes('ROLE_DEV');
+        this.isTechLead =this.roles.includes('ROLE_TEACHLEAD');
+        this.isPOwner =this.roles.includes('ROLE_POWNER');
+  
+
+        
+      } 
   }
 
   listTeams()

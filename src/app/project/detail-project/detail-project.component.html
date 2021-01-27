@@ -11,7 +11,7 @@
         </div>
 
         <img height="150" src="{{this.projectService.url+'/photoProject/'+project.id}}" />
-        <button *ngIf="!editPhoto" (click)="onEditPhoto(project)">
+        <button  *ngIf="!editPhoto &&  isPOwner" (click)="onEditPhoto(project)">
             <i class="fa fa-upload" aria-hidden="true"></i>Edit
         </button>
         <span *ngIf="editPhoto">
@@ -55,11 +55,11 @@
 
         <div class="card-footer" align="center">
 
-            <button class="btn btn-success" (click)="editProject(project.id)">
+            <button  *ngIf="isPOwner" class="btn btn-success" (click)="editProject(project.id)">
                 <i class="fa fa-edit"></i>
             </button>
 
-            <button class="btn btn-danger" (click)="deleteProject(project.id)">
+            <button  *ngIf="isPOwner" class="btn btn-danger" (click)="deleteProject(project.id)">
                 <i class="fa fa-trash"></i>
             </button>
         </div>
