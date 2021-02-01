@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Role } from '../model/role';
 import { User } from '../model/user';
 
 
@@ -13,6 +14,8 @@ const API_URL = 'http://localhost:8080/api/test/';
 export class UserService {
 
   public urlUser: string = 'http://localhost:8080/api';
+
+  public urlUserUpdate: string = 'http://localhost:8080/api/users'; // update user
 
   private userUrl = 'http://localhost:8080/api/test/user';
   private pmUrl = 'http://localhost:8080/api/test/pm';
@@ -43,6 +46,26 @@ export class UserService {
 	getAllUsers() :Observable<User[]>
 	{
 		return this.http.get<User[]>(this.urlUser+"/listUsers");
+  }
+
+
+
+  //get all users and roles
+
+	getAllUsers2() :Observable<User[]>
+	{
+		return this.http.get<User[]>(this.urlUser+"/list");
+  }
+
+
+
+
+  
+  //get all roles
+
+	getAllRoles() :Observable<Role[]>
+	{
+		return this.http.get<Role[]>(this.urlUser+"/listRoles");
 	}
 
 	//get le nombre de users
@@ -68,6 +91,12 @@ export class UserService {
 
     return this.http.request(req);
   }
+
+
+  updateUser(id:number, user : User): Observable<Object> {
+    return this.http.put<User[]>(`${this.urlUserUpdate}/${id}`, user);
+  }
+
 
 
    activeCompteUser(id:number, user: User): Observable<Object> {

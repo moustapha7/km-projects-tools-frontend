@@ -1,4 +1,5 @@
 import { Departement } from "./departement";
+import { Role } from "./role";
 
 export class User {
     id : number;
@@ -11,6 +12,7 @@ export class User {
       departement : Departement;
     profileUser : string;
     activated : Boolean;
+    rolee : Role[];
  
    
 }

@@ -22,11 +22,15 @@ export class DetailUserComponent implements OnInit {
   isLoggedIn = true;
   private roles: string[];
 
+  roless;
+
   constructor(private acroute: ActivatedRoute,  public userService :UserService, private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.id= this.acroute.snapshot.params['id'];
     this.currentUser = this.token.getUser();
+
+    this.listRoles();
 
     this.user = new User();
     this.userService.getUserById(this.id).subscribe(data => {
@@ -49,6 +53,15 @@ export class DetailUserComponent implements OnInit {
 
         
       }  
+  }
+
+  listRoles()
+  {
+    this.userService.getAllRoles().subscribe(
+      data => {
+        this.roless = data;
+      }
+    )
   }
 
 

@@ -12,6 +12,7 @@ import { EditDepartementComponent } from './departement/edit-departement/edit-de
 import { ListDepartementComponent } from './departement/list-departement/list-departement.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
 import { DetailProjectComponent } from './project/detail-project/detail-project.component';
 import { EditProjectComponent } from './project/edit-project/edit-project.component';
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {path : 'profile', component : ProfileComponent},
   {path : 'dashboard', component : DashboardComponent},
-
+  { path: 'udpate-profile/:id', component: UpdateProfileComponent },
 
   {path : 'list-client', component : ListClientComponent},
   {path : 'add-client', component : AddClientComponent},

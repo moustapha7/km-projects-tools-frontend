@@ -15,6 +15,7 @@ export class ListUsersComponent implements OnInit {
 
 
   users ;
+  users2;
   currentUser: any;
   isLoggedIn = true;
   isconnected = false;
@@ -37,6 +38,9 @@ export class ListUsersComponent implements OnInit {
 
   user : User;
   id :number;
+
+  roless;
+
   constructor( public userService: UserService, private routes :Router, private token: TokenStorageService, 
     private tokenStorageService: TokenStorageService) { }
 
@@ -45,7 +49,9 @@ export class ListUsersComponent implements OnInit {
 
     this.currentUser = this.token.getUser();
   
+    this.listRoles();
     this.listUsers();
+    this.listUsers2();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
   //  this.isConnecte = this.tokenStorageService.getToken();
 
@@ -69,17 +75,14 @@ export class ListUsersComponent implements OnInit {
   }
 
 
- /*  isCurrentConnected()
+  listRoles()
   {
-    this.users.forEach(element => {
-      if(element.username === this.currentUser.username)
-      {
-        this.isconnected = true;
+    this.userService.getAllRoles().subscribe(
+      data => {
+        this.roless = data;
       }
-
-      
-    });
-  } */
+    )
+  }
  
  
   listUsers()
@@ -87,6 +90,15 @@ export class ListUsersComponent implements OnInit {
 		this.userService.getAllUsers().subscribe(
 			data => {
 				this.users= data;
+			}
+		)
+  }
+
+  listUsers2()
+	{
+		this.userService.getAllUsers2().subscribe(
+			data => {
+				this.users2= data;
 			}
 		)
   }

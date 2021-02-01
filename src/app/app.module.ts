@@ -37,6 +37,7 @@ import { ListDeveloppeurComponent } from './utilisateur/list-developpeur/list-de
 import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
 import { CommentsComponent } from './commentaire/comments/comments.component';
 import { DetailClientComponent } from './client/detail-client/detail-client.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { DetailClientComponent } from './client/detail-client/detail-client.comp
      ListDeveloppeurComponent,
      RegisterConfirmComponent,
      CommentsComponent,
-     DetailClientComponent
+     DetailClientComponent,
+     UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

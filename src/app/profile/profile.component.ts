@@ -1,5 +1,7 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../model/user';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserService } from '../services/user.service';
 
@@ -20,13 +22,23 @@ export class ProfileComponent implements OnInit {
   title:string;
   currentTime: number;
 
-  constructor(private token: TokenStorageService, private userService : UserService) { }
+
+  id:number;
+  user : User;
+
+  constructor(private token: TokenStorageService, private userService : UserService, private routes: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser)
+    console.log(this.currentUser);
+
+   
   }
 
+  udpdateProfile(id: number)
+  {
+    this.routes.navigate(['udpate-profile',id]);
+  }
 
 
   //upload photo
