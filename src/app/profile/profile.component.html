@@ -9,16 +9,17 @@
       </div>
       <div class="card-body">
 
-        
 
-        
+
+
         <div class="container" *ngIf="currentUser; else loggedOut">
           <header class="jumbotron">
 
             <h3>
               <strong> Photo Profil :</strong> {{ currentUser.name }}
             </h3>
-            <img class="img-profile rounded-circle" height="300" src="{{this.userService.urlUser+'/photoUser/'+currentUser.id}}" />
+            <img class="img-profile rounded-circle" height="300"
+              src="{{this.userService.urlUser+'/photoUser/'+currentUser.id}}" />
 
             <button *ngIf="!editPhoto" (click)="onEditPhoto(currentUser)">
               <i class="fa fa-upload" aria-hidden="true"></i>Edit
@@ -30,8 +31,8 @@
               </button>
               {{progress}}
             </span>
-    
-          
+
+
           </header>
 
           <p>
@@ -42,7 +43,7 @@
             <strong>First Name:</strong>
             {{ currentUser.firstname }}
           </p>
-            <p>
+          <p>
             <strong>Last Name :</strong>
             {{ currentUser.name }}
           </p>
@@ -54,6 +55,16 @@
             <strong>Email:</strong>
             {{ currentUser.email }}
           </p>
+
+          <button (click)="udpdateProfile(currentUser.id)" type="button" class="btn btn-success" align="pull-right"
+            data-toggle="modal" data-target="#exampleModal">
+            modifier profile
+          </button>
+
+          <p>
+            <strong>Departement:</strong>
+            {{ currentUser.departement.name }}
+          </p>
           <strong>Roles:</strong>
           <ul>
             <li *ngFor="let role of currentUser.roles">
@@ -61,22 +72,31 @@
             </li>
           </ul>
         </div>
-        
-                <button (click)="udpdateProfile(currentUser.id)" type="button" class="btn btn-success" align="pull-right" data-toggle="modal" data-target="#exampleModal">
-                    modifier profile 
-                </button>
-                  
+
+        <button (click)="changePassword(currentUser.id)" type="button" class="btn btn-primary" align="pull-right"
+          data-toggle="modal" data-target="#exampleModal">
+          modifier password
+        </button>
+
 
 
       </div>
-      <div class="card-footer">
-      
-      </div>
+
+
+
+
+
     </div>
+    <div class="card-footer">
+
+    </div>
+
+    <app-update-profile></app-update-profile>
   </div>
+</div>
 
 
 
-  <ng-template #loggedOut>
-    Please login.
-  </ng-template>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

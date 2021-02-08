@@ -26,18 +26,25 @@ export class ProfileComponent implements OnInit {
   id:number;
   user : User;
 
-  constructor(private token: TokenStorageService, private userService : UserService, private routes: Router) { }
+  constructor(private token: TokenStorageService, private userService : UserService, private routes: Router, private actroute : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     console.log(this.currentUser);
 
    
+   
   }
 
   udpdateProfile(id: number)
   {
-    this.routes.navigate(['udpate-profile',id]);
+   
+    this.routes.navigate(['update-profile',id]);
+  }
+
+  changePassword(id: number)
+  {
+    this.routes.navigate(['change-password',id]);
   }
 
 

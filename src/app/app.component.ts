@@ -81,9 +81,14 @@ export class AppComponent {
 
   logout(): void {
     this.tokenStorageService.signOut();
-    this.router.navigate[('login')];
+   
     window.location.reload();
+    this.exitpage();
    
-   
+  }
+
+  exitpage()
+  {
+    this.router.navigateByUrl('/login');
   }
 }

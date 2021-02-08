@@ -50,14 +50,6 @@ export class AuthService {
     }, httpOptions);
   }
 
-  registerClient(user): Observable<any> {
-    return this.http.post(AUTH_API + 'signupClient', {
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      password: user.password
-    }, httpOptions);
-  }
 
   /* saveToken(jwt: string) {
 

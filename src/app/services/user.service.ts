@@ -6,8 +6,6 @@ import { User } from '../model/user';
 
 
 
-const API_URL = 'http://localhost:8080/api/test/';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,31 +13,8 @@ export class UserService {
 
   public urlUser: string = 'http://localhost:8080/api';
 
-  public urlUserUpdate: string = 'http://localhost:8080/api/users'; // update user
-
-  private userUrl = 'http://localhost:8080/api/test/user';
-  private pmUrl = 'http://localhost:8080/api/test/pm';
-  private adminUrl = 'http://localhost:8080/api/test/admin';
-
-  public urlUserActif: string = 'http://localhost:8080/api/activeUser';
-
-  public urlUserDesActif: string = 'http://localhost:8080/api/desactiveUser';
-
-  constructor(private http: HttpClient) { }
-
-  getUserBoard(): Observable<string> {
-    return this.http.get(this.userUrl, { responseType: 'text' });
-  }
-
-  getPMBoard(): Observable<string> {
-    return this.http.get(this.pmUrl, { responseType: 'text' });
-  }
-
-  getAdminBoard(): Observable<string> {
-    return this.http.get(this.adminUrl, { responseType: 'text' });
-  }
   
-
+  constructor(private http: HttpClient) { }
 
   //get all users
 
@@ -93,21 +68,24 @@ export class UserService {
   }
 
 
-  updateUser(id:number, user : User): Observable<Object> {
-    return this.http.put<User[]>(`${this.urlUserUpdate}/${id}`, user);
+  updateUser( user : User): Observable<Object> {
+    return this.http.post<User[]>(`${this.urlUser}/updateUsers`, user);
   }
 
 
 
    activeCompteUser(id:number, user: User): Observable<Object> {
-    return this.http.put(`${this.urlUserActif}/${id}`,user);
+    return this.http.put(`${this.urlUser}/activeUser/${id}`,user);
   }
 
   desactiveCompteUser(id:number, user: User): Observable<Object> {
-    return this.http.put(`${this.urlUserDesActif}/${id}`, user);
+    return this.http.put(`${this.urlUser}/desactiveUser/${id}`, user);
   }
  
 
+  changePassword(user : User): Observable<Object> {
+    return this.http.post(`${this.urlUser}/changePassword`, user);
+  }
 
 
 

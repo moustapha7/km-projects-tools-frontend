@@ -38,6 +38,7 @@ import { RegisterConfirmComponent } from './register-confirm/register-confirm.co
 import { CommentsComponent } from './commentaire/comments/comments.component';
 import { DetailClientComponent } from './client/detail-client/detail-client.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
      RegisterConfirmComponent,
      CommentsComponent,
      DetailClientComponent,
-     UpdateProfileComponent
+     UpdateProfileComponent,
+     ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -19,20 +19,26 @@ export class UpdateProfileComponent implements OnInit {
   
   id:number;
   user : User;
-
+  
   addForm: FormGroup;
   form: any = {};
   selectedDepartement:Departement;
 
   departements: Departement[];
+  currentUser: any;
+
+  errorMessage = '';
+
 
   constructor(private token: TokenStorageService, private userService : UserService, private router :Router,
     private formBuilder: FormBuilder, private acroute: ActivatedRoute, private depService: DepartementService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+
     this.id= this.acroute.snapshot.params['id'];
     this.userService.getUserById(this.id).subscribe(data => {
-      this.user = data;
+      this.currentUser = data;
     })
 
     this.getAllDepatements();
@@ -42,9 +48,7 @@ export class UpdateProfileComponent implements OnInit {
       name: new FormControl('', Validators.minLength(4)),
       username: new FormControl('', Validators.minLength(4)),
       email:  new FormControl( (new Date()).toISOString().substring(0,10), Validators.required),
-      password:  new FormControl('', Validators.minLength(4)),
 
-      deprtement: new FormControl('', Validators.required),
      
     });
 
@@ -52,30 +56,31 @@ export class UpdateProfileComponent implements OnInit {
 
   updateProfile()
   {
-    this.user.departement = this.selectedDepartement;
+ 
 
-    this.userService.updateUser(this.id,this.addForm.value).subscribe(
+    this.userService.updateUser(this.addForm.value).subscribe(
       data => {
         console.log(data);
-       ;
+       
         Swal.fire({
           title: `profile bien modifié`,
           icon: 'success',
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate[("profile")];
-       
+        this.router.navigate[('profile')];
+    
       },
       err => {
-       
+        this.errorMessage = err.error.message;
+        console.log(this.errorMessage)
         Swal.fire({
           title: `error to update profile`,
           icon: 'warning',
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate[("update-profile")];
+        this.router.navigate[('update-profile')];
       }
     );
    
@@ -90,4 +95,14 @@ export class UpdateProfileComponent implements OnInit {
     )
   }
 
+
+  logout(): void {
+    this.token.signOut();
+    
+    window.location.reload();
+   
+   
+  }
+
+  
 }

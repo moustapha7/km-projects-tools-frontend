@@ -1,48 +1,54 @@
-<form  [formGroup]="addForm" class="row g-3" (ngSubmit)="updateProfile()">
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card card-header card-primary">
+                <h5 class="card-title">Update Infos</h5>
+            </div>
+            <div class="card-body">
 
-    <div class="col-md-5">
-        <label for="name">First Name </label> 
-        <input type="text" class="form-control" name="firstname" [(ngModel)]="user.firstname"  formControlName="firstname" id="firstname"
-            minlength="3" maxlength="20"   />
+                <form  [formGroup]="addForm" class="row g-3" (ngSubmit)="updateProfile()">
+
+                    <div class="col-md-5">
+                        <label for="name">First Name </label> 
+                        <input type="text" class="form-control" name="firstname" [(ngModel)]="currentUser.firstname"  formControlName="firstname" id="firstname"
+                            minlength="3" maxlength="20"   />
+                    </div>
+                
+                    <div class="col-md-5">
+                        <label for="name">Name </label> 
+                        <input type="text" class="form-control" name="name" [(ngModel)]="currentUser.name"  formControlName="name" id="name"
+                            minlength="3" maxlength="20"   />
+                    </div>
+                
+                    <div class="col-md-5">
+                        <label for="email">Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="currentUser.username"  formControlName="username" id="username"
+                                 minlength="3" maxlength="20"   />
+                
+                    </div>
+                
+                    <div class="col-md-5">
+                        <label for="name">email</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" formControlName="email" id="email"
+                             />
+                       
+                    </div>
+                
+            
+                
+                    <div class="col-md-5" >
+                        <button  class="btn btn-primary">Save</button>
+                    </div>
+                
+                   
+                </form>
+                <div class="alert alert-warning" >
+                 <br />{{ errorMessage }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
     </div>
-
-    <div class="col-md-5">
-        <label for="name">Name </label> 
-        <input type="text" class="form-control" name="name" [(ngModel)]="user.name"  formControlName="name" id="name"
-            minlength="3" maxlength="20"   />
-    </div>
-
-    <div class="col-md-5">
-        <label for="email">Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="user.username"  formControlName="username" id="username"
-                 minlength="3" maxlength="20"   />
-
-    </div>
-
-    <div class="col-md-5">
-        <label for="name">email</label>
-        <input type="text" class="form-control" name="email" [(ngModel)]="user.email" formControlName="email" id="email"
-             />
-       
-    </div>
-
-    <!--          ------------------------------------ table etrangére------------------------- -->
-
-    <div class="col-md-5">
-        <label>Choisir Departement</label>
-        <select class="form-control" id="departement" [(ngModel)]="selectedDepartement" formControlName="departement"
-             >
-           
-            <option *ngFor="let dep of departements" [ngValue]="dep"> {{dep.name}} </option>
-        </select>
-        
-    </div>
-
-
-
-    <div class="col-md-5" >
-        <button  class="btn btn-primary">Save</button>
-    </div>
-
-   
-</form>
+</div>
