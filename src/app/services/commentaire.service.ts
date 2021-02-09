@@ -7,25 +7,25 @@ import { Commentaire } from '../model/commentaire';
   providedIn: 'root',
 })
 export class CommentaireService {
-  public baseURL = 'http://localhost:8080/api/comments';
+  public baseURL = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {}
 
   //get le nombre de comments
 
   countComments() {
-    return this.http.get(this.baseURL + '/nombre');
+    return this.http.get(this.baseURL + '/nombreComments');
   }
 
   getAllComments(): Observable<Commentaire[]> {
-    return this.http.get<Commentaire[]>(`${this.baseURL}`);
+    return this.http.get<Commentaire[]>(`${this.baseURL}/comments`);
   }
 
   createComment(commentaire: Commentaire): Observable<Object> {
-    return this.http.post<Commentaire[]>(`${this.baseURL}`, commentaire);
+    return this.http.post<Commentaire[]>(`${this.baseURL}/comments`, commentaire);
   }
 
   deleteComment(id: number): Observable<Object> {
-    return this.http.delete(`${this.baseURL}/${id}`);
+    return this.http.delete(`${this.baseURL}/comments/${id}`);
   }
 }

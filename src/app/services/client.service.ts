@@ -11,9 +11,6 @@ export class ClientService {
   
   public urlClient: string = 'http://localhost:8080/api';
 
-  public baseURL = 'http://localhost:8080/api/clients';
-
-
   
   constructor(private http: HttpClient) { }
 
@@ -25,22 +22,22 @@ export class ClientService {
   }
 
   getAllClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.baseURL}`);
+    return this.http.get<Client[]>(`${this.urlClient}/clients`);
   }
 
   createClient(client : Client): Observable<Object> {
-    return this.http.post<Client[]>(`${this.baseURL}`, client);
+    return this.http.post<Client[]>(`${this.urlClient}/clients`, client);
   }
 
   getClientById(id : number) : Observable<Client> {
-    return this.http.get<Client>(`${this.baseURL}/${id}`);
+    return this.http.get<Client>(`${this.urlClient}/clients/${id}`);
   }
 
   updateClient(id:number, client : Client): Observable<Object> {
-    return this.http.put<Client[]>(`${this.baseURL}/${id}`, client);
+    return this.http.put<Client[]>(`${this.urlClient}/clients/${id}`, client);
   }
 
   deleteClient(id : number) : Observable<Object> {
-    return this.http.delete(`${this.baseURL}/${id}`);
+    return this.http.delete(`${this.urlClient}/clients/${id}`);
   }
 }

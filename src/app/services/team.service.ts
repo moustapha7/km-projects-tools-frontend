@@ -10,7 +10,7 @@ export class TeamService {
  
   public urlTeam: string = 'http://localhost:8080/api';
 
-  public baseURL = 'http://localhost:8080/api/teams';
+
 
 
   
@@ -24,23 +24,23 @@ export class TeamService {
   }
 
   getAllTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.baseURL}`);
+    return this.http.get<Team[]>(`${this.urlTeam}/teams`);
   }
 
   createTeam(team : Team): Observable<Object> {
-    return this.http.post<Team[]>(`${this.baseURL}`, team);
+    return this.http.post<Team[]>(`${this.urlTeam}/teams`, team);
   }
 
   getTeamById(id : number) : Observable<Team> {
-    return this.http.get<Team>(`${this.baseURL}/${id}`);
+    return this.http.get<Team>(`${this.urlTeam}/teams/${id}`);
   }
 
   updateTeam(id:number, team : Team): Observable<Object> {
-    return this.http.put<Team[]>(`${this.baseURL}/${id}`, team);
+    return this.http.put<Team[]>(`${this.urlTeam}/teams/${id}`, team);
   }
 
   deleteTeam(id : number) : Observable<Object> {
-    return this.http.delete(`${this.baseURL}/${id}`);
+    return this.http.delete(`${this.urlTeam}/teams/${id}`);
   }
 
 }

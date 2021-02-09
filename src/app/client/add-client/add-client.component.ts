@@ -17,7 +17,7 @@ export class AddClientComponent implements OnInit {
   form: any = {};
   client : Client = new Client();
   addForm : FormGroup;
-
+  errorMessage : '';
 
   constructor(public clientService: ClientService, private router : Router, private formBuilder: FormBuilder) { }
 
@@ -50,14 +50,8 @@ export class AddClientComponent implements OnInit {
       },
       error => {
          console.log('error to save client'); 
-         Swal.fire({
-           title: `error to save client`,
-           icon: 'warning',
-           showConfirmButton: false,
-           timer: 1500
-           
-         });
-         this.router.navigate(['add-client']);
+         this.errorMessage = error.error.message;
+       
 
       }
      

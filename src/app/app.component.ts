@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { ClientService } from './services/client.service';
+import { CommentaireService } from './services/commentaire.service';
+import { DepartementService } from './services/departement.service';
+import { ProjectService } from './services/project.service';
+import { TeamService } from './services/team.service';
 import { TokenStorageService } from './services/token-storage.service';
 import { UserService } from './services/user.service';
 
@@ -35,8 +40,18 @@ export class AppComponent {
 
   loggedUser : string;
 
+
+  nbreUsers;
+  nbreClients;
+  nbreProjects;
+  nbreComments;
+  nbreTeams;
+  nbreDepartements;
+
+
   constructor(private tokenStorageService: TokenStorageService, private token: TokenStorageService, public userService :UserService,
-    private authService :AuthService, private router : Router) { }
+            private authService :AuthService, private router : Router, private teamService : TeamService, private comService : CommentaireService,
+            private clientService :ClientService, private projectService : ProjectService, private depService : DepartementService) { }
 
 
 
@@ -64,8 +79,13 @@ export class AppComponent {
       this.isPOwner =this.roles.includes('ROLE_POWNER');
 
 
-      this.username = user.username;
-      
+     //this.username = user.username;
+      this.nombreClients();
+      this.nombreProjects();
+      this.nombreUsers();
+      this.nombreTeams();
+      this.nombreComments();
+      this.nombreDepartements();
     }  
    
   }
@@ -91,4 +111,62 @@ export class AppComponent {
   {
     this.router.navigateByUrl('/login');
   }
+
+
+  nombreClients()
+  {
+    this.clientService.countClients().subscribe(
+      data =>{
+        this.nbreClients =data;
+      }
+    )
+  }
+
+  nombreUsers()
+  {
+    this.userService.countUsers().subscribe(
+      data =>{
+        this.nbreUsers =data;
+      }
+    )
+  }
+
+  nombreProjects()
+  {
+    this.projectService.countProject().subscribe(
+      data =>{
+        this.nbreProjects =data;
+      }
+    )
+  }
+
+  nombreTeams()
+  {
+    this.teamService.countTeams().subscribe(
+      data =>{
+        this.nbreTeams =data;
+      }
+    )
+  }
+
+  nombreComments()
+  {
+    this.comService.countComments().subscribe(
+      data =>{
+        this.nbreComments =data;
+      }
+    )
+  }
+
+  nombreDepartements()
+  {
+    this.depService.countDepartement().subscribe(
+      data =>{
+        this.nbreDepartements =data;
+      }
+    )
+  }
+
+
+
 }
