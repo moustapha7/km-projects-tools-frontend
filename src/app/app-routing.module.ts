@@ -86,7 +86,7 @@ const routes: Routes = [
   { path: 'comments', component: CommentsComponent, },
 
 
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
  // { path: '', pathMatch: 'full', redirectTo: '/login' },
 
   
