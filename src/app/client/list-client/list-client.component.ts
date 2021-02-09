@@ -20,6 +20,7 @@ export class ListClientComponent implements OnInit {
   isPOwner = false ;
   isTechLead = false;
   isLoggedIn = true;
+  title = "List Client Component";
   private roles: string[];
  
   constructor(public clientService: ClientService, private router : Router, private tokenStorageService: TokenStorageService) { }

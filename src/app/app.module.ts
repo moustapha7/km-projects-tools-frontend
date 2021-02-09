@@ -39,6 +39,8 @@ import { CommentsComponent } from './commentaire/comments/comments.component';
 import { DetailClientComponent } from './client/detail-client/detail-client.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { ClientService } from './services/client.service';
+import { TeamService } from './services/team.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,7 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
     AppRoutingModule,
     FormsModule,HttpClientModule, ReactiveFormsModule, FormsModule,
   ],
-  providers: [ authInterceptorProviders  ],
+  providers: [ authInterceptorProviders, ClientService, TeamService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
