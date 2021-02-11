@@ -41,6 +41,8 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { ClientService } from './services/client.service';
 import { TeamService } from './services/team.service';
+import { TokenStorageService } from './services/token-storage.service';
+import { DepartementService } from './services/departement.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,7 @@ import { TeamService } from './services/team.service';
     AppRoutingModule,
     FormsModule,HttpClientModule, ReactiveFormsModule, FormsModule,
   ],
-  providers: [ authInterceptorProviders, ClientService, TeamService ],
+  providers: [ authInterceptorProviders, ClientService, TeamService, TokenStorageService, DepartementService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

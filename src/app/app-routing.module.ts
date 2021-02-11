@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth.guard';
 import { AddClientComponent } from './client/add-client/add-client.component';
 import { DetailClientComponent } from './client/detail-client/detail-client.component';
 import { EditClientComponent } from './client/edit-client/edit-client.component';

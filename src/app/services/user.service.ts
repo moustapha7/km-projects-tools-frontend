@@ -23,18 +23,6 @@ export class UserService {
 		return this.http.get<User[]>(this.urlUser+"/listUsers");
   }
 
-
-
-  //get all users and roles
-
-	getAllUsers2() :Observable<User[]>
-	{
-		return this.http.get<User[]>(this.urlUser+"/list");
-  }
-
-
-
-
   
   //get all roles
 

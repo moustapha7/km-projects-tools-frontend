@@ -51,13 +51,6 @@ export class AuthService {
   }
 
 
-  /* saveToken(jwt: string) {
-
-    localStorage.setItem('token',jwt);
-    this.jwt = jwt;
-    this.parseJWT();
-  } */
-
 
   loggedIn()
   {
@@ -69,41 +62,6 @@ export class AuthService {
   }
 
  
-
- 
-/*
-  
-  parseJWT()
-  {
-    let jwtHelper =  new  JwtHelperService();
-    let objJWT = jwtHelper.decodeToken(this.jwt);
-    this.username = objJWT.obj;
-    this.roles =  objJWT.roles;
-  }
-isAdmin()
-  {
-    return this.roles.indexOf('ADMIN')>0;
-  }
-
-  isUser()
-  {
-    return this.roles.indexOf('USER')>0;
-  }
-  
-  isAuthenticated()
-  {
-    return this.roles &&( this.isAdmin() || this.isUser());
-  }
-
-  loadToken(){
-   this.jwt = localStorage.getItem('token');
-   this.parseJWT();
-  }
-
-
-
-
- */
 
 
    //list depertements
