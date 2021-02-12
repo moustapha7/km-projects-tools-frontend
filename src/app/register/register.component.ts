@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-          this.router.navigate(['login']);
+          this.router.navigate(['register-confirm']);
         },
         err => {
           this.errorMessage = err.error.message;
