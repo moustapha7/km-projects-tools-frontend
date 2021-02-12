@@ -20,6 +20,7 @@ import { ListProjectComponent } from './project/list-project/list-project.compon
 import { AddProjectTypeComponent } from './projecttype/add-project-type/add-project-type.component';
 import { EditProjectTypeComponent } from './projecttype/edit-project-type/edit-project-type.component';
 import { ListProjectTypeComponent } from './projecttype/list-project-type/list-project-type.component';
+import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
 import { RegisterComponent } from './register/register.component';
 import { AddTaskComponent } from './task/add-task/add-task.component';
 import { EditTaskComponent } from './task/edit-task/edit-task.component';
@@ -37,6 +38,8 @@ import { ListUsersComponent } from './utilisateur/list-users/list-users.componen
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register-confirm', component : RegisterConfirmComponent},
+
   {path : 'profile', component : ProfileComponent},
   {path : 'dashboard', component : DashboardComponent},
   { path: 'udpate-profile/:id', component: UpdateProfileComponent },

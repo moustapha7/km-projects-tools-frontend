@@ -78,20 +78,6 @@ export class AddProjectComponent implements OnInit {
 
   saveProject(): void {
 
-    /* this.project = new Project(
-      this.form.name,
-      this.form.description,
-  		this.form.dateDebut,
-      this.form.dateFin,
-      this.form.estimationJour,
-      this.form.estimationHeure,
-      this.form.team,
-      this.form.client,
-      this.form.userpo,
-      this.form.userteach,
-      this.form.projectType,
-      this.form.statusProject
-      ); */
       
     this.project.team = this.selectedTeam;
     this.project.client = this.selectedClient;
