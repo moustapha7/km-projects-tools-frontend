@@ -54,8 +54,8 @@
                     <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>retour
                 </a>
 
-                <button type="button" class="btn btn-success" align="pull-right" data-toggle="modal" data-target="#exampleModal">
-                    modifier son role 
+                <button *ngIf="isAdmin" type="button" class="btn btn-success" align="pull-right" data-toggle="modal" data-target="#exampleModal">
+                    modifier le role 
                 </button>
                   
                 
@@ -77,8 +77,25 @@
         </div>
         <div class="modal-body">
 
+            <form [formGroup]="addForm" class="row g-3" (ngSubmit)="updateRole()">
+                <div class="form-group">
+                    <label>Choisir le role</label>
+                    <select  class="form-control" id="role" formControlName="role" name="role" [(ngModel)]="user.role">
+                        <option [ngValue]="dev" > Développeur</option>
+                        <option [ngValue]="powner" >Product Owner</option>
+                        <option [ngValue]="teachlead">Tech Lead</option>
+                        <option [ngValue]="admin">Admin</option>
+                    </select>  
 
-          ...
+                    <!-- <input type="text" class="form-control" id="role" formControlName="role" [(ngModel)]="user.role" name="role" minlength="2"> -->
+                </div>
+                <button class="btn btn-success" type="submit">save</button>
+
+            </form>
+            <div class="alert alert-danger">
+                {{errorMessage}}
+            </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

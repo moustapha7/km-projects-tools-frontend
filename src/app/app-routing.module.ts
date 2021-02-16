@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddDepartementComponent } from './departement/add-departement/add-departement.component';
 import { EditDepartementComponent } from './departement/edit-departement/edit-departement.component';
 import { ListDepartementComponent } from './departement/list-departement/list-departement.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,6 +24,7 @@ import { EditProjectTypeComponent } from './projecttype/edit-project-type/edit-p
 import { ListProjectTypeComponent } from './projecttype/list-project-type/list-project-type.component';
 import { RegisterConfirmComponent } from './register-confirm/register-confirm.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './services/auth.service';
 import { AddTaskComponent } from './task/add-task/add-task.component';
 import { EditTaskComponent } from './task/edit-task/edit-task.component';
 import { ListTaskComponent } from './task/list-task/list-task.component';
@@ -37,57 +39,60 @@ import { ListUsersComponent } from './utilisateur/list-users/list-users.componen
 
 
 const routes: Routes = [
+
+  
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register-confirm', component : RegisterConfirmComponent},
 
-  {path : 'profile', component : ProfileComponent},
-  {path : 'dashboard', component : DashboardComponent},
-  { path: 'update-profile/:id', component: UpdateProfileComponent },
+  {path: 'home', component:HomeComponent,canActivate:[AuthGuard]},
 
-  { path: 'change-password/:id', component: ChangePasswordComponent },
+  {path : 'profile', component : ProfileComponent,canActivate:[AuthGuard]},
+  {path : 'dashboard', component : DashboardComponent,canActivate:[AuthGuard]},
+  { path: 'update-profile/:id', component: UpdateProfileComponent,canActivate:[AuthGuard] },
 
-  {path : 'list-client', component : ListClientComponent},
-  {path : 'add-client', component : AddClientComponent},
-  { path: 'edit-client/:id', component: EditClientComponent},
-  { path: 'detail-client/:id', component: DetailClientComponent },
+  { path: 'change-password/:id', component: ChangePasswordComponent ,canActivate:[AuthGuard]},
+
+  {path : 'list-client', component : ListClientComponent,canActivate:[AuthGuard]},
+  {path : 'add-client', component : AddClientComponent,canActivate:[AuthGuard]},
+  { path: 'edit-client/:id', component: EditClientComponent,canActivate:[AuthGuard]},
+  { path: 'detail-client/:id', component: DetailClientComponent ,canActivate:[AuthGuard]},
   
-  {path : 'list-project', component : ListProjectComponent},
-  {path : 'add-project', component : AddProjectComponent},
-  { path: 'detail-project/:id', component: DetailProjectComponent },
-  { path: 'edit-project/:id', component: EditProjectComponent},
+  {path : 'list-project', component : ListProjectComponent,canActivate:[AuthGuard]},
+  {path : 'add-project', component : AddProjectComponent,canActivate:[AuthGuard]},
+  { path: 'detail-project/:id', component: DetailProjectComponent,canActivate:[AuthGuard] },
+  { path: 'edit-project/:id', component: EditProjectComponent,canActivate:[AuthGuard]},
  
 
-  {path : 'list-project-type', component : ListProjectTypeComponent},
-  {path : 'add-project-type', component : AddProjectTypeComponent},
-  { path: 'edit-project-type/:id', component: EditProjectTypeComponent },
+  {path : 'list-project-type', component : ListProjectTypeComponent,canActivate:[AuthGuard]},
+  {path : 'add-project-type', component : AddProjectTypeComponent,canActivate:[AuthGuard]},
+  { path: 'edit-project-type/:id', component: EditProjectTypeComponent ,canActivate:[AuthGuard]},
  
 
-  {path : 'list-team', component : ListTeamComponent},
-  {path : 'add-team', component : AddTeamComponent},
-  { path: 'edit-team/:id', component: EditTeamComponent},
+  {path : 'list-team', component : ListTeamComponent,canActivate:[AuthGuard]},
+  {path : 'add-team', component : AddTeamComponent,canActivate:[AuthGuard]},
+  { path: 'edit-team/:id', component: EditTeamComponent,canActivate:[AuthGuard]},
 
 
-  {path : 'list-user', component : ListUsersComponent},
-  { path: 'details-user/:id', component: DetailUserComponent },
-  {path : 'list-tech-lead', component : ListTechLeadComponent},
-  {path : 'list-developpeur', component : ListDeveloppeurComponent},
-  {path : 'list-product-owner', component : ListProductOwnerComponent},
+  {path : 'list-user', component : ListUsersComponent,canActivate:[AuthGuard]},
+  { path: 'details-user/:id', component: DetailUserComponent ,canActivate:[AuthGuard]},
+  {path : 'list-tech-lead', component : ListTechLeadComponent,canActivate:[AuthGuard]},
+  {path : 'list-developpeur', component : ListDeveloppeurComponent,canActivate:[AuthGuard]},
+  {path : 'list-product-owner', component : ListProductOwnerComponent,canActivate:[AuthGuard]},
 
  
   
 
-  {path : 'list-departement', component : ListDepartementComponent},
-  {path : 'add-departement', component : AddDepartementComponent},
-  { path: 'edit-departement/:id', component: EditDepartementComponent },
+  {path : 'list-departement', component : ListDepartementComponent,canActivate:[AuthGuard]},
+  {path : 'add-departement', component : AddDepartementComponent,canActivate:[AuthGuard]},
+  { path: 'edit-departement/:id', component: EditDepartementComponent ,canActivate:[AuthGuard]},
 
   
-  {path : 'list-task', component : ListTaskComponent},
-  {path : 'add-task', component : AddTaskComponent},
-  { path: 'edit-task/:id', component: EditTaskComponent, },
+  {path : 'list-task', component : ListTaskComponent,canActivate:[AuthGuard]},
+  {path : 'add-task', component : AddTaskComponent,canActivate:[AuthGuard]},
+  { path: 'edit-task/:id', component: EditTaskComponent,canActivate:[AuthGuard] },
 
-  { path: 'comments', component: CommentsComponent, },
-
+  { path: 'comments', component: CommentsComponent,canActivate:[AuthGuard] },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
  // { path: '', pathMatch: 'full', redirectTo: '/login' },

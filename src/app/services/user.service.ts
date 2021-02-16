@@ -23,18 +23,6 @@ export class UserService {
 		return this.http.get<User[]>(this.urlUser+"/listUsers");
   }
 
-
-
-  //get all users and roles
-
-	getAllUsers2() :Observable<User[]>
-	{
-		return this.http.get<User[]>(this.urlUser+"/list");
-  }
-
-
-
-
   
   //get all roles
 
@@ -87,6 +75,8 @@ export class UserService {
     return this.http.post(`${this.urlUser}/changePassword`, user);
   }
 
-
+  updateRoleUser(id:number, user: User): Observable<Object> {
+    return this.http.put(`${this.urlUser}/updateRoleUser/${id}`,user);
+  }
 
 }

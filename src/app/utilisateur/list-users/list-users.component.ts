@@ -15,7 +15,7 @@ export class ListUsersComponent implements OnInit {
 
 
   users ;
-  users2;
+
   currentUser: any;
   isLoggedIn = true;
   isconnected = false;
@@ -51,7 +51,6 @@ export class ListUsersComponent implements OnInit {
   
     this.listRoles();
     this.listUsers();
-    this.listUsers2();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
   //  this.isConnecte = this.tokenStorageService.getToken();
 
@@ -94,15 +93,6 @@ export class ListUsersComponent implements OnInit {
 		)
   }
 
-  listUsers2()
-	{
-		this.userService.getAllUsers2().subscribe(
-			data => {
-				this.users2= data;
-			}
-		)
-  }
-  
   userDetails(id :number)
 	{
     this.routes.navigate(['details-user',id]);

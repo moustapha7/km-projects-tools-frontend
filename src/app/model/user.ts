@@ -12,7 +12,7 @@ export class User {
       departement : Departement;
     profileUser : string;
     activated : Boolean;
-    rolee : Role[];
+  
  
    
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from 'src/app/model/role';
 import { User } from 'src/app/model/user';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-user',
@@ -23,8 +26,16 @@ export class DetailUserComponent implements OnInit {
   private roles: string[];
 
   roless;
+  selectedRole : Role;
+  addForm: FormGroup;
+  errorMessage= '';
+  dev;
+  powner;
+  teachlead;
+  admin;
 
-  constructor(private acroute: ActivatedRoute,  public userService :UserService, private token: TokenStorageService) { }
+  constructor(private acroute: ActivatedRoute,  public userService :UserService,private router: Router, private formBuilder: FormBuilder,
+             private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.id= this.acroute.snapshot.params['id'];
@@ -52,7 +63,34 @@ export class DetailUserComponent implements OnInit {
   
 
         
-      }  
+      }
+      
+      this.addForm = this.formBuilder.group({
+        role: new FormControl()
+       
+      }); 
+  }
+
+  updateRole()
+  {
+
+    this.userService.updateRoleUser(this.id,this.addForm.value).subscribe(
+      data => {
+        console.log(data);
+        Swal.fire({
+          title: `Role bien modifié`,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate(['list-user']);
+
+      },
+      err => {
+        this.errorMessage = err.error.message;
+       
+      }
+    )
   }
 
   listRoles()
