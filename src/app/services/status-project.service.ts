@@ -8,9 +8,6 @@ import { StatusProject } from '../model/statusProject';
 })
 export class StatusProjectService {
 
-
-  public url: string = 'http://localhost:8080/api';
-
   public baseURL = 'http://localhost:8080/api/statusProjects';
 
 

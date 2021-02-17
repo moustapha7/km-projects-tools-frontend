@@ -1,7 +1,10 @@
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Developpeur } from '../model/developpeur';
+import { Powner } from '../model/powner';
 import { Role } from '../model/role';
+import { Techlead } from '../model/techlead';
 import { User } from '../model/user';
 
 
@@ -23,15 +26,20 @@ export class UserService {
 		return this.http.get<User[]>(this.urlUser+"/listUsers");
   }
 
-
-
-  //get all users and roles
-
-	getAllUsers2() :Observable<User[]>
-	{
-		return this.http.get<User[]>(this.urlUser+"/list");
+  getAllDev() : Observable<Developpeur[]>
+  {
+    return this.http.get<Developpeur[]>(this.urlUser+ "/listDeveloppeurs");
   }
 
+  getAllTechLead(): Observable<Techlead[]>
+  {
+    return this.http.get<Techlead[]>(this.urlUser+ "/listTechleads");
+  }
+
+  getAllPowner(): Observable<Powner[]>
+  {
+    return this.http.get<Powner[]>(this.urlUser+ "/listPowners");
+  }
 
 
 

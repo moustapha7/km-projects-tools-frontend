@@ -81,7 +81,7 @@
                     <div class="col-md-5">
                         <label>Project Type </label>
                         <select class="form-control" id="projectType" name="projectType" formControlName="projectType"
-                            [(ngModel)]="selectedProjectType" #projectType required projectType>
+                            [(ngModel)]="selectedProjectType" >
                            
                             <option *ngFor="let pt of projectTypes" [ngValue]="pt"> {{pt.name}} </option>
                         </select>
@@ -91,7 +91,7 @@
                     <div class="col-md-5">
                         <label>Status Project </label>
                         <select class="form-control" id="statusProject" name="statusProject" formControlName="statusProject"
-                            [(ngModel)]="selectedStatusProject" #statusProject t>
+                            [(ngModel)]="selectedStatusProject" >
                             
                             <option *ngFor="let stpr of statusProjects" [ngValue]="stpr"> {{stpr.name}} </option>
                         </select>

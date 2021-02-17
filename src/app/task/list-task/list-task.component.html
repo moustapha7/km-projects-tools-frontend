@@ -1,1 +1,67 @@
-<p>list-task works!</p>
+
+
+<li class="nav-item">
+    <a href="add-task" class="btn btn-primary align-right" routerLink="/add-project"> new task</a>
+</li>
+
+<div class="row">
+
+
+    <div class="container">
+
+        <div class="card card-header text-center"> 
+            <h6 class="m-0 font-weight-bold text-primary">
+                <button (click)="listTask()" class="btn btn-primary"><i class="fa fa-sync-alt"></i></button> Task List 
+            </h6> 
+        </div>
+        <div class="card-body">
+            <div *ngIf="tasks" class="row row-cols-1 row-cols-md-3 g-4 ">
+
+
+                <div *ngFor="let task of tasks" class="col">
+
+                    <div class="card h-100">
+
+                        <div class="card card-header"
+                        [ngClass]="{'done': task.statusTask.name == 'Done', 'doing': task.statusTask.name == 'Doing',
+                        'todo': task.statusTask.name == 'ToDo', 'blocked': task.statusTask.name == 'Blocked' }">
+
+                            <strong>{{task.name}}</strong>
+                        </div>
+                        <div class="card-body">
+
+
+                            <p><strong>Description :</strong> {{task.description}} </p>
+                            <p><strong>Developpeur :</strong> {{task.developpeur.name}} {{task.developpeur.firstname}}</p>
+                            <p><strong>Project:</strong> {{task.project.name}}
+                            </p>
+                            <p><strong>Status Task :</strong> {{task.statusTask.name}}</p>
+                            <p><strong>Date Debut  :</strong> {{task.dateDebut}}</p>
+                            <p><strong>Date Fin  :</strong> {{task.dateFin}}</p>
+                            <p><strong>Estimation Jour  :</strong> {{task.estimationJour}}</p>
+                            <p><strong>Estimation Heure  :</strong> {{task.estimationHeure}}</p>
+                        </div>
+                        <div class="card-footer" align="center">
+                            <button  class="btn btn-primary">
+                                <i class="fa fa-eye"></i>
+                            </button>
+
+                            <button  class="btn btn-success" (click)="updateTask(task.id)" >
+                                <i class="fa fa-edit"></i>
+                            </button>
+
+                            <button   class="btn btn-danger" (click)="deleteTask(task.id)" >
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer" align="center">
+
+        </div>
+    </div>
+</div>

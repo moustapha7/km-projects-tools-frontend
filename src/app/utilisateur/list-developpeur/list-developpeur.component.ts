@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-developpeur',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListDeveloppeurComponent implements OnInit {
 
-  constructor() { }
+  devs;
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.listDevs();
+  }
+
+  listDevs()
+  {
+    this.userService.getAllDev().subscribe(
+      data => {
+        this.devs= data;
+      }
+    )
   }
 
 }

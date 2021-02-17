@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-product-owner',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListProductOwnerComponent implements OnInit {
 
-  constructor() { }
+
+  powners;
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.listPowners();
+  }
+
+  listPowners()
+  {
+    this.userService.getAllPowner().subscribe(
+      data => {
+        this.powners= data;
+      }
+    )
   }
 
 }

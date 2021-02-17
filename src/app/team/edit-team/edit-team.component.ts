@@ -48,6 +48,8 @@ export class EditTeamComponent implements OnInit {
       this.team= data;
       });
 
+   
+
     this.listusers();
     
     this.addForm = this.formBuilder.group({
@@ -57,19 +59,28 @@ export class EditTeamComponent implements OnInit {
     });
   }
 
+
+  listusers() {
+    this.userTeachs =[];
+    this.userService.getAllUsers().subscribe((data) => {
+      this.userTeachs = data;
+    });
+  }
+
+
+
   updateTeam() {
 
- 
-    this.team.user = this.selectedTechLead;
-
-   this.userTeachs.forEach(utea => {
-      if(utea.id ==  this.team.user.id)
+    this.userTeachs.forEach(utea => {
+      if(utea.id ===  this.team.user.id)
       {
         this.selectedTechLead = utea;
        
       }
     });
+  
  
+    this.team.user = this.selectedTechLead;
     this.teamService.updateTeam(this.id, this.addForm.value).subscribe(
       (data) => {
         Swal.fire({
@@ -93,9 +104,5 @@ export class EditTeamComponent implements OnInit {
     );
   }
 
-  listusers() {
-    this.userService.getAllUsers().subscribe((data) => {
-      this.userTeachs = data;
-    });
-  }
+  
 }

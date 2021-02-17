@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-tech-lead',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListTechLeadComponent implements OnInit {
 
-  constructor() { }
+  techleads;
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.listTechlead();
+  }
+
+  listTechlead()
+  {
+    this.userService.getAllTechLead().subscribe(
+      data => {
+        this.techleads = data;
+      }
+    )
   }
 
 }

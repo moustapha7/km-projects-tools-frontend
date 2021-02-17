@@ -1,0 +1,20 @@
+div.done {
+    background-color: #4CAF50 !important;
+    color: #ffffff;
+}
+
+div.doing {
+    background-color: #e4e11d !important;
+    color: #ffffff;
+}
+
+div.todo {
+    background-color: #aaaaa9 !important;
+    color: #ffffff;
+}
+
+div.blocked {
+    background-color: #fa0909 !important;
+    color: #ffffff;
+}
+
