@@ -14,6 +14,7 @@ export class AddDepartementComponent implements OnInit {
 
   addForm : FormGroup;
   departement : Departement = new Departement();
+  errorMessage= '';
 
   constructor(private depService : DepartementService, private router : Router, private formBuilder  : FormBuilder) { }
 
@@ -38,14 +39,7 @@ export class AddDepartementComponent implements OnInit {
       },
       error => {
         console.log('error to save departement'); 
-        Swal.fire({
-          title: `error to save departement`,
-          icon: 'warning',
-          showConfirmButton: false,
-          timer: 1500
-          
-        });
-        this.router.navigate(['add-departement']);
+        this.errorMessage = error.error.message;
 
      }
     );

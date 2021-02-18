@@ -68,19 +68,13 @@ export class UpdateProfileComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate[('profile')];
+        this.logout();
     
       },
       err => {
         this.errorMessage = err.error.message;
         console.log(this.errorMessage)
-        Swal.fire({
-          title: `error to update profile`,
-          icon: 'warning',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.router.navigate[('update-profile')];
+        
       }
     );
    

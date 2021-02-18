@@ -91,15 +91,8 @@ export class EditTeamComponent implements OnInit {
         });
         this.router.navigate(['list-team']);
       },
-      (error) => {
-        console.log('error to update team');
-        Swal.fire({
-          title: `error to update team`,
-          icon: 'warning',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.router.navigate(['edit-team']);
+      error => {
+        this.errorMessage = error.error.message;
       }
     );
   }

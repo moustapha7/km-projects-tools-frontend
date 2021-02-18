@@ -27,7 +27,7 @@ export class AddProjectTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
-      name: new FormControl('',  Validators.minLength(4))
+      name: new FormControl('',  Validators.minLength(2))
     });
 
   }
@@ -43,32 +43,25 @@ export class AddProjectTypeComponent implements OnInit {
     this.loading = true;
     
 
-          this.proTypeService.createProjectType(this.addForm.value).subscribe(
-            result =>
-            {
-              Swal.fire({
-                title: `Project Type bien ajouté`,
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-                
-              });
-              this.router.navigate(['list-project-type']);
-              console.log(result);
-            },
-             error => {
-                console.log('error to save post'); 
-                Swal.fire({
-                  title: `error to save post`,
-                  icon: 'warning',
-                  showConfirmButton: false,
-                  timer: 1500
-                  
-                });
-                this.router.navigate(['add-project-type']);
-             }
-          );
-       
+      this.proTypeService.createProjectType(this.addForm.value).subscribe(
+        result =>
+        {
+          Swal.fire({
+            title: `Project Type bien ajouté`,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+            
+          });
+          this.router.navigate(['list-project-type']);
+          console.log(result);
+        },
+          error => {
+            console.log('error to save project type'); 
+            this.errorMessage = error.error.message;
+          }
+      );
+    
 
   }
 

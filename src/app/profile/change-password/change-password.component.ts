@@ -42,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate[('profile')];
+        this.router.navigateByUrl('/profile');
       },
       err => {
         this.errorMessage = err.error.message;

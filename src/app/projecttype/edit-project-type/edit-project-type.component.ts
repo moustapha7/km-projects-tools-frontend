@@ -22,6 +22,8 @@ export class EditProjectTypeComponent implements OnInit {
   addForm: FormGroup;
   submitted = false;
   form: any = {};
+  errorMessage = '';
+  
   constructor(
     private actroute: ActivatedRoute,
     private router: Router,
@@ -61,14 +63,8 @@ export class EditProjectTypeComponent implements OnInit {
           });
           this.router.navigate(['list-project-type']);
         },
-        (error) => {
-          Swal.fire({
-            title: `error de modification  : nom project type null`,
-            icon: 'warning',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          this.router.navigate(['edit-project-type']);
+        error => {
+          this.errorMessage = error.error.message;
         }
       );
   }

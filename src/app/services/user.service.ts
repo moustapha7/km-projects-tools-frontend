@@ -16,7 +16,7 @@ export class UserService {
 
   public urlUser: string = 'http://localhost:8080/api';
 
-  
+
   constructor(private http: HttpClient) { }
 
   //get all users
@@ -43,7 +43,7 @@ export class UserService {
 
 
 
-  
+
   //get all roles
 
 	getAllRoles() :Observable<Role[]>
@@ -57,7 +57,7 @@ export class UserService {
 	{
 		return this.http.get(this.urlUser+"/nombreUsers");
   }
-  
+
   //user by id
   getUserById(id : number) : Observable<User> {
     return this.http.get<User>(`${this.urlUser}/users/${id}`);
@@ -89,12 +89,14 @@ export class UserService {
   desactiveCompteUser(id:number, user: User): Observable<Object> {
     return this.http.put(`${this.urlUser}/desactiveUser/${id}`, user);
   }
- 
+
 
   changePassword(user : User): Observable<Object> {
     return this.http.post(`${this.urlUser}/changePassword`, user);
   }
 
-
+  updateRoleUser(id:number, user: User): Observable<Object> {
+    return this.http.put(`${this.urlUser}/updateRoleUser/${id}`,user);
+  }
 
 }

@@ -87,7 +87,7 @@ export class EditTaskComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.error.message;
-        this.router.navigate(['edit-task']);
+       
       }
     )
   }

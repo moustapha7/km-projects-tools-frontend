@@ -16,6 +16,8 @@ export class EditDepartementComponent implements OnInit {
   addForm : FormGroup;
   id : number;
   departement : Departement;
+  errorMessage = '';
+
   constructor(private formBuilder : FormBuilder, private router : Router, private actroute : ActivatedRoute,
     private depService : DepartementService) { }
 
@@ -48,14 +50,7 @@ export class EditDepartementComponent implements OnInit {
       },
       error => {
         console.log('error to update departement'); 
-        Swal.fire({
-          title: `error to update departement`,
-          icon: 'warning',
-          showConfirmButton: false,
-          timer: 1500
-          
-        });
-        this.router.navigate(['edit-departement']);
+        this.errorMessage = error.error.message;
 
      }
     );

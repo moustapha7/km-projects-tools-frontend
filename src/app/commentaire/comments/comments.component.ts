@@ -67,7 +67,7 @@ export class CommentsComponent implements OnInit {
         console.log(data);
       }
     );
-    this.routes.navigate(['detail-project']);
+    this.listComments();
   }
 
   listComments()
@@ -125,7 +125,7 @@ export class CommentsComponent implements OnInit {
             'success'
           )
 
-          this.routes.navigate(['comments', id]);
+          this.listComments();
         });
 
       }

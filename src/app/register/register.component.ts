@@ -72,13 +72,6 @@ export class RegisterComponent implements OnInit {
           this.isSignUpFailed = true;
           this.isSuccessful = false;
 
-          Swal.fire({
-            title: `registration failled`,
-            icon: 'warning',
-            showConfirmButton: false,
-            timer: 3000,
-          });
-          this.router.navigate(['register']);
         }
       );
 

@@ -96,7 +96,7 @@ export class DetailProjectComponent implements OnInit {
             'success'
           )
 
-          this.routes.navigate(['detail-project', id]);
+          this.routes.navigate(['list-project']);
         });
 
       }

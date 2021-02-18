@@ -39,6 +39,7 @@ import { CommentsComponent } from './commentaire/comments/comments.component';
 import { DetailClientComponent } from './client/detail-client/detail-client.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
      CommentsComponent,
      DetailClientComponent,
      UpdateProfileComponent,
-     ChangePasswordComponent
+     ChangePasswordComponent, HomeComponent
   ],
   imports: [
     BrowserModule,

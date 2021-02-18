@@ -72,7 +72,7 @@ export class AddTaskComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.error.message;
-        this.router.navigate(['add-task']);
+       
       }
     )
   }

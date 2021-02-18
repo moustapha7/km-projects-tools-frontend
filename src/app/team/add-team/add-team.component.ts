@@ -65,14 +65,7 @@ export class AddTeamComponent implements OnInit {
         },
          error => {
             console.log('error to save team'); 
-            Swal.fire({
-              title: `error to save team`,
-              icon: 'warning',
-              showConfirmButton: false,
-              timer: 1500
-              
-            });
-            this.router.navigate(['add-team']);
+            this.errorMessage = error.error.message;
 
          }
         

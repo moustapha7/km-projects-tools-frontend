@@ -110,19 +110,12 @@ export class EditProjectComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate[("list-project")];
+        this.router.navigate(['list-project']);
        
       },
       err => {
         this.errorMessage = err.error.message;
         this.isAddProjectFailed = true;
-        Swal.fire({
-          title: `error to update project`,
-          icon: 'warning',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.router.navigate[("edit-project")];
       }
     );
    

@@ -15,6 +15,7 @@ export class ListUsersComponent implements OnInit {
 
 
   users ;
+
   currentUser: any;
   isLoggedIn = true;
   isconnected = false;
@@ -40,14 +41,14 @@ export class ListUsersComponent implements OnInit {
 
   roless;
 
-  constructor( public userService: UserService, private routes :Router, private token: TokenStorageService, 
+  constructor( public userService: UserService, private routes :Router, private token: TokenStorageService,
     private tokenStorageService: TokenStorageService) { }
 
 
   ngOnInit(): void {
 
     this.currentUser = this.token.getUser();
-  
+
     this.listRoles();
     this.listUsers();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -68,8 +69,8 @@ export class ListUsersComponent implements OnInit {
 
 
       this.username = user.username;
-      
-    }  
+
+    }
   }
 
 
@@ -81,8 +82,8 @@ export class ListUsersComponent implements OnInit {
       }
     )
   }
- 
- 
+
+
   listUsers()
 	{
 		this.userService.getAllUsers().subscribe(
@@ -92,14 +93,13 @@ export class ListUsersComponent implements OnInit {
 		)
   }
 
-  
   userDetails(id :number)
 	{
     this.routes.navigate(['details-user',id]);
   }
 
 
- activerCompte(id :number, user : User) 
+ activerCompte(id :number, user : User)
   {
     Swal.fire({
       title: `Voulez vous activer ce  compte utilisateur  ?`,
@@ -109,13 +109,13 @@ export class ListUsersComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     })
-    .then((result) => 
+    .then((result) =>
     {
       if (result.isConfirmed)
       {
         this.userService.activeCompteUser(id,user).subscribe( data => {
           console.log(data);
-          
+
           Swal.fire(
             'Activé!',
             'Compte bien activé.',
@@ -125,24 +125,24 @@ export class ListUsersComponent implements OnInit {
           this.listUsers();
         },
         (error) => {
-          
+
           Swal.fire({
             title: `error d'activation`,
             icon: 'warning',
             showConfirmButton: false,
             timer: 1500,
           });
-        
+
         });
 
       }
     })
 
-   
+
   }
-  
-  
-  desactiverCompte(id :number, user : User) 
+
+
+  desactiverCompte(id :number, user : User)
   {
     Swal.fire({
       title: `Voulez vous desactiver ce  compte utilisateur  ?`,
@@ -152,13 +152,13 @@ export class ListUsersComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     })
-    .then((result) => 
+    .then((result) =>
     {
       if (result.isConfirmed)
       {
         this.userService.desactiveCompteUser(id,user).subscribe( data => {
           console.log(data);
-          
+
           Swal.fire(
             'Desactivé!',
             'Compte bien desactivé.',
@@ -168,23 +168,23 @@ export class ListUsersComponent implements OnInit {
           this.listUsers();
         },
         (error) => {
-          
+
           Swal.fire({
             title: `error de desactivation`,
             icon: 'warning',
             showConfirmButton: false,
             timer: 1500,
           });
-        
+
         }
         );
 
       }
     })
 
-   
+
   }
-  
-  
- 
+
+
+
 }

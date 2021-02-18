@@ -36,19 +36,20 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
        // this.roles = this.tokenStorage.getUser().roles;
-        this.routes.navigate[('dashboard')];
-       this.reloadPage();
        
+      // this.reloadPage();
+       this.routes.navigateByUrl('/home');
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.routes.navigateByUrl('/login');
       }
     );
   }
 
-  reloadPage(): void {
+ /*  reloadPage(): void {
     window.location.reload();
-  }
+  } */
 
 }
