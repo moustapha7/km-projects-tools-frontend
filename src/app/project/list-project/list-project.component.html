@@ -1,11 +1,12 @@
-<li class="nav-item">
-    <a href="add-project" class="btn btn-primary align-right" routerLink="/add-project"> new project</a>
-</li>
+
 
 <div class="row">
 
-
+  
     <div class="container">
+        <li  *ngIf="isPOwner" class="nav-item">
+            <a href="add-project" class="btn btn-primary align-right" routerLink="/add-project"> new project</a>
+        </li>
 
         <div class="card card-header text-center"> 
             <h6 class="m-0 font-weight-bold text-primary">
@@ -42,8 +43,8 @@
 
 
                             <p><strong>Team :</strong> {{project.team.name}} </p>
-                            <p><strong>Product Owner :</strong> {{project.userpo.name}} {{project.userpo.firstname}}</p>
-                            <p><strong>Teach Lead :</strong> {{project.userteach.name}} {{project.userteach.firstname}}
+                            <p><strong>Product Owner :</strong> {{project.powner.name}} {{project.powner.firstname}}</p>
+                            <p><strong>Teach Lead :</strong> {{project.techlead.name}} {{project.techlead.firstname}}
                             </p>
                             <p><strong>Etat Projet :</strong> {{project.statusProject.name}}</p>
                         </div>

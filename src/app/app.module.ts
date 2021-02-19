@@ -80,8 +80,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,HttpClientModule, ReactiveFormsModule, FormsModule,
+    AppRoutingModule
+    ,HttpClientModule, ReactiveFormsModule, FormsModule,
   ],
   providers: [ authInterceptorProviders  ],
   bootstrap: [AppComponent]

@@ -27,7 +27,7 @@ export class AddProjectTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
-      name: new FormControl('',  Validators.minLength(2))
+      name : ['',   [Validators.required, Validators.minLength(2)]]
     });
 
   }
@@ -41,7 +41,11 @@ export class AddProjectTypeComponent implements OnInit {
   saveProjectType()
   {
     this.loading = true;
-    
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
 
       this.proTypeService.createProjectType(this.addForm.value).subscribe(
         result =>

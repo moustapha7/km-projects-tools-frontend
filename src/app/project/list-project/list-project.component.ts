@@ -1,12 +1,8 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Client } from 'src/app/model/client';
 import { Project } from 'src/app/model/project';
-import { ProjectType } from 'src/app/model/projectType';
-import { StatusProject } from 'src/app/model/statusProject';
 import { Team } from 'src/app/model/team';
-import { User } from 'src/app/model/user';
 import { ProjectService } from 'src/app/services/project.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
@@ -21,14 +17,7 @@ export class ListProjectComponent implements OnInit {
 
   projects : Project[];
   project :Project;
-  clients : Client[];
-  projectTypes : ProjectType[];
-  statusProjects : StatusProject [];
-  teams: Team[];
-  productOwner : User[];
-  teachLead : User[];
-
-
+  
   editPhoto: boolean;
   currentProject;
   selectedFiles;

@@ -29,6 +29,9 @@ export class CommentsComponent implements OnInit {
   selectedProject : Project;
   projects : Project[];
 
+  errorMessage = '';
+  submitted = false;
+
   constructor(private acroute: ActivatedRoute, public projectService : ProjectService, private routes : Router, private token: TokenStorageService,
     private formBuilder : FormBuilder, private comService : CommentaireService,  private userService : UserService) { }
 
@@ -50,22 +53,34 @@ export class CommentsComponent implements OnInit {
     this. listProjects();
     this.listComments();
     this.commentForm = this.formBuilder.group({
-      project : new FormControl(''),
-      content: new FormControl('', Validators.minLength(2)),
+      project : ['',  Validators.required],
+      content: ['',  [Validators.required, Validators.minLength(2)]],
     })
     
   }
 
-
+  get f() { return this.commentForm.controls; }
   
   SaveComment()
   {
+    this.submitted = true;
+
+    if (this.commentForm.invalid) {
+      return;
+       }
+
     this.commentaire.project = this.selectedProject;
     this.comService.createComment(this.commentForm.value).subscribe(
       data =>
       {
         console.log(data);
-      }
+
+        this.routes.navigate(['comments']);
+      },
+      error => {
+        this.errorMessage = error.error.message;
+     }
+
     );
     this.listComments();
   }

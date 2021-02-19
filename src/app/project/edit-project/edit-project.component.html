@@ -12,27 +12,40 @@
                     <div class="col-md-5">
                         <label for="name">Name </label> 
                         <input type="text" class="form-control" name="name" [(ngModel)]="project.name"  formControlName="name" id="name"
-                            minlength="3" maxlength="20"   />
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">name is required</div>
+                                </div>  
                     </div>
 
                     <div class="col-md-5">
                         <label for="email">Description</label>
                         <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="project.description" formControlName="description"
-                            ></textarea>
+                                [ngClass]="{ 'is-invalid': submitted && f.description.errors }" minLength="10"></textarea>
+                           
+                            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                <div *ngIf="f.description.errors.required">description is required</div>
+                            </div>  
                 
                     </div>
 
                     <div class="col-md-5">
                         <label for="name">Date Début</label>
                         <input type="date" class="form-control" name="dateDebut" [(ngModel)]="project.dateDebut" formControlName="dateDebut" id="dateDebut"
-                             />
+                                [ngClass]="{ 'is-invalid': submitted && f.dateDebut.errors }" >
+                                <div *ngIf="submitted && f.dateDebut.errors" class="invalid-feedback">
+                                    <div *ngIf="f.dateDebut.errors.required">date debut is required</div>
+                                </div>  
                        
                     </div>
 
                     <div class="col-md-5">
                         <label for="name">Date Fin</label>
                         <input type="date" class="form-control" name="dateFin" [(ngModel)]="project.dateFin" formControlName="dateFin" id="dateFin"
-                             />
+                                [ngClass]="{ 'is-invalid': submitted && f.dateFin.errors }" >
+                                <div *ngIf="submitted && f.dateFin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.dateFin.errors.required">date fin required</div>
+                                </div>  
                         
                     </div>
 
@@ -41,66 +54,86 @@
 
                     <div class="col-md-5">
                         <label>Choisir Team</label>
-                        <select class="form-control" id="team" [(ngModel)]="selectedTeam" formControlName="team"
-                             >
-                           
+                        <select class="form-control" id="team" name="team" [(ngModel)]="selectedTeam" formControlName="team"  
+                                    [ngClass]="{ 'is-invalid': submitted && f.team.errors }"  >
                             <option *ngFor="let tea of teams" [ngValue]="tea"> {{tea.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.team.errors" class="invalid-feedback">
+                            <div *ngIf="f.team.errors.required">team is required</div>
+                        </div>  
                         
                     </div>
 
                     <div class="col-md-5">
                         <label>Client</label>
                         <select class="form-control" id="client" name="client" [(ngModel)]="selectedClient" formControlName="client"
-                             >
+                                     [ngClass]="{ 'is-invalid': submitted && f.client.errors }"  >
                            
                             <option *ngFor="let cli of clients" [ngValue]="cli"> {{cli.prenom}} {{cli.nom}} </option>
                         </select>
+                        <div *ngIf="submitted && f.client.errors" class="invalid-feedback">
+                            <div *ngIf="f.client.errors.required">client is required</div>
+                        </div> 
                        
                     </div>
 
                     <div class="col-md-5">
                         <label>Product Owner</label>
-                        <select class="form-control" id="userpo" name="userpo" [(ngModel)]="selectedUserpo" formControlName="userpo"  >
-                          
-                            <option *ngFor="let po of userpos" [ngValue]="po"> {{po.name}} </option>
+                        <select class="form-control" id="powner" name="powner" [(ngModel)]="selectedPowner" formControlName="powner"
+                                [ngClass]="{ 'is-invalid': submitted && f.client.errors }"  >       
+                            <option *ngFor="let po of powners" [ngValue]="po">  {{po.firstname}} {{po.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.powner.errors" class="invalid-feedback">
+                            <div *ngIf="f.powner.errors.required">product owner is required</div>
+                        </div> 
                         
                     </div>
 
                     <div class="col-md-5">
                         <label>Tech Lead</label>
-                        <select class="form-control" id="userteach" name="userteach" [(ngModel)]="selectedUserteach" formControlName="userteach"
-                           >
+                        <select class="form-control" id="techlead" name="techlead" [(ngModel)]="selectedTechlead" formControlName="techlead"
+                                    [ngClass]="{ 'is-invalid': submitted && f.techlead.errors }"  >     
                             
-                            <option *ngFor="let ust of userteachs" [ngValue]="ust"> {{ust.name}} </option>
+                            <option *ngFor="let ust of techleads" [ngValue]="ust"> {{ust.firstname}} {{ust.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.techlead.errors" class="invalid-feedback">
+                            <div *ngIf="f.techlead.errors.required">tech lead is required</div>
+                        </div> 
+                        
                        
                     </div>
 
                     <div class="col-md-5">
                         <label>Project Type </label>
                         <select class="form-control" id="projectType" name="projectType" formControlName="projectType"
-                            [(ngModel)]="selectedProjectType" #projectType required projectType>
+                                 [ngClass]="{ 'is-invalid': submitted && f.projectType.errors }"  [(ngModel)]="selectedProjectType" >
                            
                             <option *ngFor="let pt of projectTypes" [ngValue]="pt"> {{pt.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.projectType.errors" class="invalid-feedback">
+                            <div *ngIf="f.projectType.errors.required">project Type is required</div>
+                        </div> 
                        
                     </div>
 
                     <div class="col-md-5">
                         <label>Status Project </label>
                         <select class="form-control" id="statusProject" name="statusProject" formControlName="statusProject"
-                            [(ngModel)]="selectedStatusProject" #statusProject t>
+                             [ngClass]="{ 'is-invalid': submitted && f.statusProject.errors }" [(ngModel)]="selectedStatusProject" >
                             
                             <option *ngFor="let stpr of statusProjects" [ngValue]="stpr"> {{stpr.name}} </option>
                         </select>
-                       
+                        <div *ngIf="submitted && f.statusProject.errors" class="invalid-feedback">
+                            <div *ngIf="f.statusProject.errors.required">status Project is required</div>
+                        </div> 
                     </div>
 
 
                     <div class="col-md-5" >
-                        <button  class="btn btn-primary">Save</button>
+                        <div class="text-center">
+                            <button [disabled]="!addForm.valid" class="btn btn-primary mr-1">save</button>
+                 
+                        </div>
                     </div>
 
                    

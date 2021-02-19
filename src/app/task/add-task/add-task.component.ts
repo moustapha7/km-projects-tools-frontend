@@ -26,6 +26,7 @@ export class AddTaskComponent implements OnInit {
   addForm : FormGroup;
   errorMessage = '';
   form: any = {};
+  submitted = false;
 
   projects :Project[];
   statusTasks : StatusTask[];
@@ -41,20 +42,30 @@ export class AddTaskComponent implements OnInit {
     this.listStatusTask();
 
     this.addForm = this.formBuilder.group({
-      name: new FormControl('', Validators.minLength(4)),
-      description: new FormControl('', Validators.minLength(4)),
-      dateDebut:  new FormControl('', Validators.required),
-      dateFin:  new FormControl('', Validators.required),
+      name: ['',   [Validators.required, Validators.minLength(4)]],
+      description:  ['',   [Validators.required, Validators.minLength(10)]],
+      dateDebut:  ['',   Validators.required],
+      dateFin:  ['',   Validators.required],
     //  estimationJour :  new FormControl('', Validators.minLength(4)),
      // estimationHeure :  new FormControl('', Validators.minLength(4)),
-     developpeur : new FormControl('', Validators.required),
-     statusTask : new FormControl('', Validators.required),
-     project : new FormControl('', Validators.required),
+     developpeur :  ['',   Validators.required],
+     statusTask :  ['',   Validators.required],
+     project :  ['',   Validators.required],
     });
+  }
+
+  get f() {
+    return this.addForm.controls;
   }
 
   saveTask()
   {
+
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
 
     this.task.developpeur = this.selectedDev;
     this.task.project = this.selectedProject;
@@ -103,6 +114,11 @@ export class AddTaskComponent implements OnInit {
         this.statusTasks = data;
       }
     )
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 
 }

@@ -80,14 +80,17 @@
             <form [formGroup]="addForm" class="row g-3" (ngSubmit)="updateRole()">
                 <div class="form-group">
                     <label>Choisir le role</label>
-                    <select  class="form-control" id="role" formControlName="role" name="role" [(ngModel)]="user.role">
-                        <option [ngValue]="dev" > Développeur</option>
-                        <option [ngValue]="powner" >Product Owner</option>
-                        <option [ngValue]="teachlead">Tech Lead</option>
-                        <option [ngValue]="admin">Admin</option>
-                    </select>  
+                    <select  class="form-control" id="role" formControlName="role" name="role" [(ngModel)]="user.role"
+                                 [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                        <option value="dev" > Développeur</option>
+                        <option value="powner" >Product Owner</option>
+                        <option value="teachlead">Tech Lead</option>
+                        <option value="admin">Admin</option>
+                    </select> 
+                    <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                        <div *ngIf="f.role.errors.required">role is required</div>
+                    </div> 
 
-                    <!-- <input type="text" class="form-control" id="role" formControlName="role" [(ngModel)]="user.role" name="role" minlength="2"> -->
                 </div>
                 <button class="btn btn-success" type="submit">save</button>
 

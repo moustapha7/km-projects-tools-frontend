@@ -17,6 +17,7 @@ export class EditDepartementComponent implements OnInit {
   id : number;
   departement : Departement;
   errorMessage = '';
+  submitted = false;
 
   constructor(private formBuilder : FormBuilder, private router : Router, private actroute : ActivatedRoute,
     private depService : DepartementService) { }
@@ -30,12 +31,19 @@ export class EditDepartementComponent implements OnInit {
     )
 
     this.addForm = this.formBuilder.group({
-      name : new FormControl('', Validators.minLength(4))
+      name : ['',   [Validators.required, Validators.minLength(2)]]
     });
   }
 
+  get f() { return this.addForm.controls; }
+
   updateDepartement()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
 
     this.depService.updateDepartement(this.id,this.addForm.value).subscribe(
       data =>{

@@ -12,12 +12,11 @@
                         <div class="form-group">
 
                             <label for="title">Name:</label>
-                            <input formControlName="name" id="name" type="text" class="form-control" minlength="4" [(ngModel)]="projectType.name"
-                                maxlength="50">
-                            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                                <div *ngIf="f.name.errors.required">name is required.</div>
-
-                            </div>
+                            <input formControlName="name" id="name"  [(ngModel)]="projectType.name" type="text" class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">name is required</div>
+                                    </div> 
                         </div>
                     </div>
                     <button [disabled]="!addForm.valid" class="btn btn-primary">

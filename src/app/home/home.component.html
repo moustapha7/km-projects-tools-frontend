@@ -30,7 +30,7 @@
 
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="/dashboard" routerLink="/dashboard">{{title}}</a>
+    <a class="navbar-brand" href="home" routerLink="home">{{title}}</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
         class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -77,68 +77,68 @@
 
 
             <!--  mon Menu principal-->
-            <a class="nav-link" href="dashboard" routerLink="/dashboard">
+            <a class="nav-link" href="dashboard" routerLink="dashboard">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-project" routerLink="/list-project">
+              <a class="nav-link" href="list-project" routerLink="list-project">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Projects</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-project-type" routerLink="/list-project-type">
+              <a class="nav-link" href="list-project-type" routerLink="list-project-type">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Projects Type</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-task" routerLink="/list-task">
+              <a class="nav-link" href="list-task" routerLink="list-task">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tasks</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-team" routerLink="/list-team">
+              <a class="nav-link" href="list-team" routerLink="list-team">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Team</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-client" routerLink="/list-client">
+              <a class="nav-link" href="list-client" routerLink="list-client">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Clients</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-user" routerLink="/list-user">
+              <a class="nav-link" href="list-user" routerLink="list-user">
                 <i class="fas fa-user "></i>
                 <span>Utilisateurs</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-product-owner" routerLink="/list-product-owner">
+              <a class="nav-link" href="list-product-owner" routerLink="list-product-owner">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Product Owner</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-tech-lead" routerLink="/list-tech-lead">
+              <a class="nav-link" href="list-tech-lead" routerLink="list-tech-lead">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tech Lead</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="list-developpeur" routerLink="/list-developpeur">
+              <a class="nav-link" href="list-developpeur" routerLink="list-developpeur">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Développeur</span></a>
             </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="list-departement" routerLink="/list-departement">
+              <a class="nav-link" href="list-departement" routerLink="list-departement">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Departements</span></a>
             </li>
@@ -175,7 +175,7 @@
                 <div class="card-body">Projects</div>
                 <h2 class="text-center">{{nbreProjects}}</h2>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link" href="list-project" routerLink="/list-project">View
+                  <a class="small text-white stretched-link" href="list-project" routerLink="list-project">View
                     Details</a>
                   <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -187,7 +187,7 @@
                 <div class="card-body">Clients</div>
                 <h2 class="text-center">{{nbreClients}}</h2>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link" href="list-client" routerLink="/list-client">View
+                  <a class="small text-white stretched-link" href="list-client" routerLink="list-client">View
                     Details</a>
                   <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -199,7 +199,7 @@
                 <div class="card-body">Teams</div>
                 <h2 class="text-center">{{nbreTeams}}</h2>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link" href="list-team" routerLink="/list-team">View Details</a>
+                  <a class="small text-white stretched-link" href="list-team" routerLink="list-team">View Details</a>
                   <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
               </div>
@@ -210,7 +210,7 @@
                 <div class="card-body">Departements</div>
                 <h2 class="text-center">{{nbreDepartements}}</h2>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link" href="list-departement" routerLink="/list-departement">View
+                  <a class="small text-white stretched-link" href="list-departement" routerLink="list-departement">View
                     Details</a>
                   <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -222,7 +222,7 @@
                 <div class="card-body">Commentaires</div>
                 <h2 class="text-center">{{nbreComments}}</h2>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link" href="comments" routerLink="/comments">View Details</a>
+                  <a class="small text-white stretched-link" href="comments" routerLink="comments">View Details</a>
                   <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
               </div>

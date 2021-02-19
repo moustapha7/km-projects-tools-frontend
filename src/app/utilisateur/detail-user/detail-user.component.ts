@@ -33,6 +33,7 @@ export class DetailUserComponent implements OnInit {
   powner;
   teachlead;
   admin;
+  submitted = false;
 
   constructor(private acroute: ActivatedRoute,  public userService :UserService,private router: Router, private formBuilder: FormBuilder,
              private token: TokenStorageService) { }
@@ -66,13 +67,22 @@ export class DetailUserComponent implements OnInit {
       }
       
       this.addForm = this.formBuilder.group({
-        role: new FormControl()
+        role:  ['',   Validators.required],
        
       }); 
   }
 
+  get f() {
+    return this.addForm.controls;
+  }
+
   updateRole()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
 
     this.userService.updateRoleUser(this.id,this.addForm.value).subscribe(
       data => {

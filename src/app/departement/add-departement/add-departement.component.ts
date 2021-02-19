@@ -15,17 +15,28 @@ export class AddDepartementComponent implements OnInit {
   addForm : FormGroup;
   departement : Departement = new Departement();
   errorMessage= '';
+  submitted = false;
+
+
 
   constructor(private depService : DepartementService, private router : Router, private formBuilder  : FormBuilder) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
-      name : new FormControl('', Validators.minLength(4))
+      name : ['',   [Validators.required, Validators.minLength(2)]]
     });
   }
 
+  get f() { return this.addForm.controls; }
+
   saveDepartement()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+
     this.depService.createDepartement(this.addForm.value).subscribe(
       data =>{
         Swal.fire({
@@ -43,6 +54,11 @@ export class AddDepartementComponent implements OnInit {
 
      }
     );
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 
 }

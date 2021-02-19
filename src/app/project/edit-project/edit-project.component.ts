@@ -11,9 +11,10 @@ import { Client } from 'src/app/model/client';
 import { ProjectType } from 'src/app/model/projectType';
 import { StatusProject } from 'src/app/model/statusProject';
 import { Team } from 'src/app/model/team';
-import { User } from 'src/app/model/user';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Powner } from 'src/app/model/powner';
+import { Techlead } from 'src/app/model/techlead';
 
 
 @Component({
@@ -35,25 +36,23 @@ export class EditProjectComponent implements OnInit {
 
   selectedTeam:Team;
    selectedClient: Client;
-   selectedUserpo : User;
-   selectedUserteach : User;
+   selectedPowner : Powner;
+   selectedTechlead: Techlead;
    selectedProjectType: ProjectType;
    selectedStatusProject : StatusProject;
 
+   submitted = false;
   
-  teams:Team[];
+
+
+   teams:Team[];
    clients: Client[];
-   userpos : User[];
-   userteachs : User[];
+
+   powners : Powner[];
+   techleads : Techlead[];
+
    projectTypes: ProjectType[];
    statusProjects : StatusProject[];
-
-   team:Team;
-   client: Client;
-   userpo : User;
-   userteach : User;
-   projectType: ProjectType;
-   statusProject : StatusProject;
 
   constructor(private acroues : ActivatedRoute, private projectService :ProjectService, private clientService: ClientService, 
     private teamService : TeamService, private router: Router,  private formBuilder: FormBuilder,
@@ -66,38 +65,47 @@ export class EditProjectComponent implements OnInit {
       {
         this.project= data;
       });
-      this.listUsers();
+      this.listPowners();
+      this.listTechLeads();
       this.listTeams();
       this.listClients();
       this.listStatusProject();
       this.listProjectType();
 
       this.addForm = this.formBuilder.group({
-        name: new FormControl('', Validators.minLength(4)),
-        description: new FormControl('', Validators.minLength(4)),
-        dateDebut:  new FormControl( (new Date()).toISOString().substring(0,10), Validators.required),
-        dateFin:  new FormControl('', Validators.minLength(4)),
-      //  estimationJour :  new FormControl('', Validators.minLength(4)),
-       // estimationHeure :  new FormControl('', Validators.minLength(4)),
-        team: new FormControl('', Validators.required),
-        client: new FormControl('', Validators.required),
-        userpo :  new FormControl('', Validators.required),
-        userteach :  new FormControl('', Validators.required),
-        projectType: new FormControl('', Validators.required),
-        statusProject :  new FormControl('', Validators.required),
+        name: ['',   [Validators.required, Validators.minLength(2)]],
+        description:['',   [Validators.required, Validators.minLength(10)]],
+        dateDebut: ['',   Validators.required],
+        dateFin:  ['',   Validators.required],
+      //  estimationJour :  ['',   Validators.required],
+       // estimationHeure :  ['',   Validators.required],
+        team: ['',   Validators.required],
+        client:  ['',   Validators.required],
+        powner :   ['',   Validators.required],
+        techlead :  ['',   Validators.required],
+        projectType:  ['',   Validators.required],
+        statusProject :   ['',   Validators.required],
      
       });
   }
 
+  get f() { return this.addForm.controls; }
+
  updateProject(): void {
 
    
-    this.project.team = this.selectedTeam;
-    this.project.client = this.selectedClient;
-    this.project.userpo = this.selectedUserpo;
-    this.project.userteach = this.selectedUserteach;
-    this.project.projectType = this.selectedProjectType;
-    this.project.statusProject = this.selectedStatusProject;
+  this.submitted = true;
+
+  if (this.addForm.invalid) {
+    return;
+     }
+    
+  this.project.team = this.selectedTeam;
+  this.project.client = this.selectedClient;
+  this.project.powner = this.selectedPowner;
+  this.project.techlead = this.selectedTechlead;
+  this.project.projectType = this.selectedProjectType;
+  this.project.statusProject = this.selectedStatusProject;
 
     this.projectService.updateProject(this.id,this.addForm.value).subscribe(
       data => {
@@ -122,8 +130,6 @@ export class EditProjectComponent implements OnInit {
   }
 
 
-
-  
   listClients()
   {
     this.clientService.getAllClients().subscribe(
@@ -132,6 +138,26 @@ export class EditProjectComponent implements OnInit {
       }
     )
     
+  }
+
+  listPowners()
+	{
+		this.userService.getAllPowner().subscribe(
+			data => {
+        this.powners= data;
+      }
+      
+		)
+  }
+
+  listTechLeads()
+	{
+		this.userService.getAllTechLead().subscribe(
+			data => {
+        this.techleads= data;
+      }
+      
+		)
   }
 
  
@@ -145,17 +171,7 @@ export class EditProjectComponent implements OnInit {
     
   }
 
-  listUsers()
-	{
-		this.userService.getAllUsers().subscribe(
-			data => {
-        this.userpos= data;
-        this.userteachs= data;
-      }
-      
-		)
-  }
-  
+ 
   listStatusProject()
   {
     this.statusProjectService.getAllStatusProject().subscribe(

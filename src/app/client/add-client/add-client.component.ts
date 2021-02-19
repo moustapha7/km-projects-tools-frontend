@@ -18,24 +18,32 @@ export class AddClientComponent implements OnInit {
   client : Client = new Client();
   addForm : FormGroup;
   errorMessage : '';
+  submitted = false;
 
   constructor(public clientService: ClientService, private router : Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
       
-      prenom : new FormControl('',  Validators.minLength(4)),
-      nom :new FormControl('',  Validators.minLength(4)),
-      adresse :new FormControl('',  Validators.minLength(4)),
-      tel : new FormControl('',  Validators.minLength(4)),
-      email :new FormControl('',  Validators.email),
+      prenom : ['',  [Validators.required, Validators.minLength(2)]],
+      nom :['',   [Validators.required, Validators.minLength(2)]],
+      adresse :['',  [Validators.required, Validators.minLength(2)]],
+      tel : ['',  [Validators.required, Validators.minLength(9)]],
+      email : ['', [Validators.required, Validators.email]],
 
     });
 
   }
+  get f() { return this.addForm.controls; }
 
   saveClient()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+
     this.clientService.createClient(this.addForm.value).subscribe(
       result =>
       {
@@ -58,6 +66,11 @@ export class AddClientComponent implements OnInit {
     )
     
 
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 
 

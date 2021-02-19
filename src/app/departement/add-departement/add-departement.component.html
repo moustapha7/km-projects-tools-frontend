@@ -11,14 +11,18 @@
                         <div class="form-group">
 
                             <label for="title">Name:</label>
-                            <input formControlName="name" id="name"  [(ngModel)]="departement.name" type="text" class="form-control" minlength="4" placeholder="nom du departement"
-                                maxlength="50" >
+                            <input formControlName="name" id="name"  [(ngModel)]="departement.name" type="text" class="form-control" placeholder="nom du departement"
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">name is required</div>
+                                    </div> 
                                
                         </div>
                     </div>
-                    <button class="btn btn-primary">
-                        Save
-                    </button>
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1">save</button>
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </div>
                 </form>
                
             </div>

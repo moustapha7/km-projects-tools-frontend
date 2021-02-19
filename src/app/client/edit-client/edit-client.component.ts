@@ -18,6 +18,7 @@ export class EditClientComponent implements OnInit {
   
   errorMessage : '';
   id :number;
+  submitted = false;
   constructor( private router: Router, private formBuilder: FormBuilder, private actroute : ActivatedRoute, private clientService: ClientService) { }
 
   ngOnInit(): void {
@@ -28,21 +29,28 @@ export class EditClientComponent implements OnInit {
       this.client= data;
       });
 
+      
 
     this.addForm = this.formBuilder.group({
-      code : new FormControl,
-      prenom : new FormControl('',  Validators.minLength(4)),
-      nom :new FormControl('',  Validators.minLength(4)),
-      adresse :new FormControl('',  Validators.minLength(4)),
-      tel : new FormControl('',  Validators.minLength(4)),
-      email :new FormControl('',  Validators.email),
+      code : ['',  Validators.required],
+      prenom : ['',  [Validators.required, Validators.minLength(2)]],
+      nom :['',   [Validators.required, Validators.minLength(2)]],
+      adresse :['',  [Validators.required, Validators.minLength(2)]],
+      tel : ['',  [Validators.required, Validators.minLength(9)]],
+      email : ['', [Validators.required, Validators.email]],
 
     });
 
   }
 
+  get f() { return this.addForm.controls; }
+
   updateClient() {
 
+    this.submitted = true;
+    if (this.addForm.invalid) {
+      return;
+  }
  
     this.clientService.updateClient(this.id, this.addForm.value).subscribe(
       (data) => {

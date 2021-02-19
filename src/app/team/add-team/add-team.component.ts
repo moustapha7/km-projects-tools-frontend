@@ -24,7 +24,7 @@ export class AddTeamComponent implements OnInit {
   isSuccessful = false;
   isAddProjectFailed = false;
   errorMessage = '';
-
+  submitted = false;
 
   addForm : FormGroup;
 
@@ -36,18 +36,27 @@ export class AddTeamComponent implements OnInit {
     this.listusers();
     this.addForm = this.formBuilder.group({
   
-      name: new FormControl('',  Validators.minLength(4)),
-      description: new FormControl('',  Validators.minLength(4)),
-      user: new FormControl('',  Validators.minLength(4)),
+      name: ['',   [Validators.required, Validators.minLength(2)]],
+      description:['',   [Validators.required, Validators.minLength(5)]],
+      user: ['',   Validators.required],
      
     });
 
   }
 
+  get f() {
+    return this.addForm.controls;
+  }
 
 
   saveTeam()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+
     this.team.user = this.selectedTechLead;
     this.teamService.createTeam(this.addForm.value).subscribe(
       data => {

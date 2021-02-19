@@ -10,24 +10,37 @@
                 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" id="libelle" formControlName="name" [(ngModel)]="team.name" name="name" minlength="3" maxlength="50">
+                        <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="team.name" name="name" 
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">name is required</div>
+                                </div> 
                     </div>
 
                                         
                     <div class="form-group">
                         <label>Description</label>
                         <textarea type="text" class="form-control" id="description" formControlName="description"
-                         [(ngModel)]="team.description" name="description" minlength="3" maxlength="50"></textarea>
+                         [(ngModel)]="team.description" name="description" minlength="3" maxlength="50"
+                            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" >
+                        </textarea>
+                            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                <div *ngIf="f.description.errors.required">description is required</div>
+                            </div>
                     </div>
 
 
 
                     <div class="form-group">
                         <label>Teach Lead</label>
-                        <select class="form-control" id="user" formControlName="user" name="user" [(ngModel)]="selectedTechLead">
+                        <select class="form-control" id="user" formControlName="user" name="user" [(ngModel)]="selectedTechLead"
+                                 [ngClass]="{ 'is-invalid': submitted && f.user.errors }">
                             <option>.....Selectionner....</option>
                             <option *ngFor="let uste of userTeachs" [ngValue]="uste"> {{uste.firstname}} {{uste.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+                            <div *ngIf="f.user.errors.required">user Teachs is required</div>
+                        </div> 
                     </div>
 
 

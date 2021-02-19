@@ -18,37 +18,52 @@
                      </div> 
          
                      <div class="form-group">
-                         <label>Prenom</label>
-                         <input type="text" class="form-control" [(ngModel)]="client.prenom" name="prenom" formControlName="prenom"
-                             id="prenom">
-                     </div>
+                        <label>Prenom</label>
+                        <input type="text" class="form-control" [(ngModel)]="client.prenom" name="prenom" formControlName="prenom"
+                               [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"  id="prenom">
+                               <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                   <div *ngIf="f.prenom.errors.required">prenom is required</div>
+                               </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" [(ngModel)]="client.nom" name="nom" formControlName="nom"
+                           [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  id="nom">
+                           <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                               <div *ngIf="f.nom.errors.required">nom is required</div>
+                           </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <input type="text" class="form-control" [(ngModel)]="client.adresse" name="adresse" formControlName="adresse"
+                               [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }"  id="adresse">
+                               <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+                                   <div *ngIf="f.adresse.errors.required">adresse is required</div>
+                               </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Telephone</label>
+                        <input type="text" class="form-control" [(ngModel)]="client.tel" name="tel" formControlName="tel"
+                               [ngClass]="{ 'is-invalid': submitted && f.tel.errors }"  id="tel">
+                               <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                                   <div *ngIf="f.tel.errors.required">Telephone is required</div>
+                               </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" [(ngModel)]="client.email" name="email" formControlName="email"
+                               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  id="email">
+                               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                   <div *ngIf="f.email.errors.required">email is required</div>
+                               </div>
+                    </div>
          
-                     <div class="form-group">
-                         <label>Nom</label>
-                         <input type="text" class="form-control" [(ngModel)]="client.nom" name="nom" formControlName="nom"
-                             id="nom">
-                     </div>
          
-                     <div class="form-group">
-                         <label>Adresse</label>
-                         <input type="text" class="form-control" [(ngModel)]="client.adresse" name="adresse" formControlName="adresse"
-                             id="adresse">
-                     </div>
-         
-                     <div class="form-group">
-                         <label>Telephone</label>
-                         <input type="text" class="form-control" [(ngModel)]="client.tel" name="tel" formControlName="tel"
-                             id="tel">
-                     </div>
-         
-                     <div class="form-group">
-                         <label>Email</label>
-                         <input type="text" class="form-control" [(ngModel)]="client.email" name="email" formControlName="email"
-                             id="email">
-                     </div>
-         
-         
-                     <button class="btn btn-primary">Save</button>
+                     <button [disabled]="!addForm.valid" class="btn btn-primary">Save</button>
          
                  </form>
                  

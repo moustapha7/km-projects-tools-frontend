@@ -20,20 +20,32 @@ export class ChangePasswordComponent implements OnInit {
   errorMessage : '';
   currentUser: any;
   changePassword :  ChangePassword;
+  submitted = false;
+
+
   constructor(private router : Router, private userService : UserService, private formBuilder: FormBuilder,private token: TokenStorageService) { }
 
   ngOnInit(): void {
 
     this.currentUser = this.token.getUser();
     this.addForm = this.formBuilder.group({
-      username : new FormControl(),
-      newPassword : new FormControl('', Validators.required),
-      confirmNewPassword : new FormControl('', Validators.required)
+      username :  ['',  [Validators.required]],
+      newPassword : ['',  [Validators.required, Validators.minLength(6)]],
+      confirmNewPassword : ['',  [Validators.required, Validators.minLength(6)]],
     });
   }
 
+  get f() { return this.addForm.controls; }
+
   updatePassword()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+
+
     this.userService.changePassword(this.addForm.value).subscribe(
       data => {
         Swal.fire({
@@ -50,5 +62,10 @@ export class ChangePasswordComponent implements OnInit {
       }
     );
     
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 }

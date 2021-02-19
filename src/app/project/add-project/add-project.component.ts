@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/model/client';
+import { Powner } from 'src/app/model/powner';
 import { Project } from 'src/app/model/project';
 import { ProjectType } from 'src/app/model/projectType';
 import { StatusProject } from 'src/app/model/statusProject';
 import { Team } from 'src/app/model/team';
+import { Techlead } from 'src/app/model/techlead';
 import { User } from 'src/app/model/user';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectTypeService } from 'src/app/services/project-type.service';
@@ -31,16 +33,19 @@ export class AddProjectComponent implements OnInit {
   project : Project = new Project();
   selectedTeam:Team;
    selectedClient: Client;
-   selectedUserpo : User;
-   selectedUserteach : User;
+   selectedPowner : Powner;
+   selectedTechlead: Techlead;
    selectedProjectType: ProjectType;
    selectedStatusProject : StatusProject;
 
-  
+   submitted = false;
+
    teams:Team[];
    clients: Client[];
-   userpos : User[];
-   userteachs : User[];
+
+   powners : Powner[];
+   techleads : Techlead[];
+
    projectTypes: ProjectType[];
    statusProjects : StatusProject[];
    addForm: FormGroup;
@@ -52,7 +57,8 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.listUsers();
+    this.listPowners();
+    this.listTechLeads();
     this.listTeams();
     this.listClients();
     this.listStatusProject();
@@ -60,29 +66,35 @@ export class AddProjectComponent implements OnInit {
 
     
     this.addForm = this.formBuilder.group({
-      name: new FormControl('', Validators.minLength(4)),
-      description: new FormControl('', Validators.minLength(4)),
-      dateDebut:  new FormControl('', Validators.required),
-      dateFin:  new FormControl('', Validators.required),
-    //  estimationJour :  new FormControl('', Validators.minLength(4)),
-     // estimationHeure :  new FormControl('', Validators.minLength(4)),
-      team: new FormControl('', Validators.required),
-      client: new FormControl('', Validators.required),
-      userpo :  new FormControl('', Validators.required),
-      userteach :  new FormControl('', Validators.required),
-      projectType: new FormControl('', Validators.required),
-      statusProject :  new FormControl('', Validators.required)
+      name: ['',   [Validators.required, Validators.minLength(2)]],
+      description:['',   [Validators.required, Validators.minLength(10)]],
+      dateDebut: ['',   Validators.required],
+      dateFin:  ['',   Validators.required],
+    //  estimationJour :  ['',   Validators.required],
+     // estimationHeure :  ['',   Validators.required],
+      team: ['',   Validators.required],
+      client:  ['',   Validators.required],
+      powner :   ['',   Validators.required],
+      techlead :  ['',   Validators.required],
+      projectType:  ['',   Validators.required],
+      statusProject :   ['',   Validators.required],
    
     });
   }
+  get f() { return this.addForm.controls; }
 
   saveProject(): void {
 
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
       
     this.project.team = this.selectedTeam;
     this.project.client = this.selectedClient;
-    this.project.userpo = this.selectedUserpo;
-    this.project.userteach = this.selectedUserteach;
+    this.project.powner = this.selectedPowner;
+    this.project.techlead = this.selectedTechlead;
     this.project.projectType = this.selectedProjectType;
     this.project.statusProject = this.selectedStatusProject;
 
@@ -132,12 +144,21 @@ export class AddProjectComponent implements OnInit {
     
   }
 
-  listUsers()
+  listPowners()
 	{
-		this.userService.getAllUsers().subscribe(
+		this.userService.getAllPowner().subscribe(
 			data => {
-        this.userpos= data;
-        this.userteachs= data;
+        this.powners= data;
+      }
+      
+		)
+  }
+
+  listTechLeads()
+	{
+		this.userService.getAllTechLead().subscribe(
+			data => {
+        this.techleads= data;
       }
       
 		)
@@ -161,7 +182,10 @@ export class AddProjectComponent implements OnInit {
 
   }
 
-
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
+  }
 
 
 }

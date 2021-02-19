@@ -29,6 +29,7 @@ export class UpdateProfileComponent implements OnInit {
 
   errorMessage = '';
 
+  submitted = false;
 
   constructor(private token: TokenStorageService, private userService : UserService, private router :Router,
     private formBuilder: FormBuilder, private acroute: ActivatedRoute, private depService: DepartementService) { }
@@ -44,19 +45,25 @@ export class UpdateProfileComponent implements OnInit {
     this.getAllDepatements();
 
     this.addForm = this.formBuilder.group({
-      firstname: new FormControl('', Validators.minLength(4)),
-      name: new FormControl('', Validators.minLength(4)),
-      username: new FormControl('', Validators.minLength(4)),
-      email:  new FormControl( (new Date()).toISOString().substring(0,10), Validators.required),
+      firstname:  ['',  [Validators.required, Validators.minLength(2)]],
+      name:  ['',  [Validators.required, Validators.minLength(2)]],
+      username:  ['',  [Validators.required, Validators.minLength(2)]],
+      email:   ['',  [Validators.email, Validators.minLength(6)]],
 
      
     });
 
   }
 
+  get f() { return this.addForm.controls; }
+
   updateProfile()
   {
- 
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
 
     this.userService.updateUser(this.addForm.value).subscribe(
       data => {
@@ -96,6 +103,11 @@ export class UpdateProfileComponent implements OnInit {
     window.location.reload();
    
    
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 
   

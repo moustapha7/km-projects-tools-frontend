@@ -11,26 +11,38 @@
                     <div class="col-md-5">
                         <label for="name">First Name </label> 
                         <input type="text" class="form-control" name="firstname" [(ngModel)]="currentUser.firstname"  formControlName="firstname" id="firstname"
-                            minlength="3" maxlength="20"   />
+                                [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" >
+                                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstname.errors.required">first name is required</div>
+                                </div> 
                     </div>
                 
                     <div class="col-md-5">
                         <label for="name">Name </label> 
                         <input type="text" class="form-control" name="name" [(ngModel)]="currentUser.name"  formControlName="name" id="name"
-                            minlength="3" maxlength="20"   />
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">name is required</div>
+                                </div> 
                     </div>
                 
                     <div class="col-md-5">
                         <label for="email">Username</label>
                         <input type="text" class="form-control" name="username" [(ngModel)]="currentUser.username"  formControlName="username" id="username"
-                                 minlength="3" maxlength="20"   />
+                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">username is required</div>
+                                </div>   
                 
                     </div>
                 
                     <div class="col-md-5">
                         <label for="name">email</label>
                         <input type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" formControlName="email" id="email"
-                             />
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">email is required</div>
+                        </div>
                        
                     </div>
                 

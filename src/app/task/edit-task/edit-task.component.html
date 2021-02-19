@@ -11,27 +11,40 @@
 
                     <div class="col-md-5">
                         <label for="name">Name </label> 
-                        <input type="text" class="form-control" name="name" [(ngModel)]="task.name"  formControlName="name" id="name" />
+                        <input type="text" class="form-control" name="name" [(ngModel)]="task.name"  formControlName="name" id="name" 
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">name is required</div>
+                            </div> 
                     </div>
 
                     <div class="col-md-5">
                         <label for="email">Description</label>
                         <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="task.description" formControlName="description"
-                            ></textarea>
+                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">description is required</div>
+                        </div> 
                 
                     </div>
 
                     <div class="col-md-5">
                         <label for="name">Date Début</label>
                         <input type="date" class="form-control" name="dateDebut" [(ngModel)]="task.dateDebut" formControlName="dateDebut" id="dateDebut"
-                             />
+                                [ngClass]="{ 'is-invalid': submitted && f.dateDebut.errors }" >
+                                <div *ngIf="submitted && f.dateDebut.errors" class="invalid-feedback">
+                                    <div *ngIf="f.dateDebut.errors.required">date Debut is required</div>
+                                </div> 
                        
                     </div>
 
                     <div class="col-md-5">
                         <label for="name">Date Fin</label>
                         <input type="date" class="form-control" name="dateFin" [(ngModel)]="task.dateFin" formControlName="dateFin" id="dateFin"
-                             />
+                                [ngClass]="{ 'is-invalid': submitted && f.dateFin.errors }" >
+                                <div *ngIf="submitted && f.dateFin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.dateFin.errors.required">date Fin is required</div>
+                                </div> 
                         
                     </div>
 
@@ -41,30 +54,40 @@
                     <div class="col-md-5">
                         <label> Developpeur</label>
                         <select class="form-control" id="developpeur" name="developpeur" [(ngModel)]="selectedDev" formControlName="developpeur"
-                            required >
+                                 [ngClass]="{ 'is-invalid': submitted && f.developpeur.errors }"  >
                            
                             <option *ngFor="let dev of devs" [ngValue]="dev"> {{dev.firstname}}  {{dev.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.developpeur.errors" class="invalid-feedback">
+                            <div *ngIf="f.developpeur.errors.required">developpeur is required</div>
+                        </div> 
                         
                     </div>
 
                     <div class="col-md-5">
                         <label>Project</label>
                         <select class="form-control" id="project" name="project" [(ngModel)]="selectedProject" formControlName="project"
-                        required >
+                                 [ngClass]="{ 'is-invalid': submitted && f.developpeur.errors }" >
                            
                             <option *ngFor="let pro of projects" [ngValue]="pro"> {{pro.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.project.errors" class="invalid-feedback">
+                            <div *ngIf="f.project.errors.required">project is required</div>
+                        </div> 
                        
                     </div>
 
                     <div class="col-md-5">
                         <label>Status Task</label>
                         <select class="form-control" id="statusTask" name="statusTask" [(ngModel)]="selectedStatusTask" formControlName="statusTask"
-                        required >
+                                          [ngClass]="{ 'is-invalid': submitted && f.statusTask.errors }"         >
                           
                             <option *ngFor="let st of statusTasks" [ngValue]="st">  {{st.name}} </option>
                         </select>
+                        <div *ngIf="submitted && f.statusTask.errors" class="invalid-feedback">
+                            <div *ngIf="f.statusTask.errors.required">status Task is required</div>
+                        </div> 
+                       
                         
                     </div>
 
@@ -73,8 +96,10 @@
 
                     <div class="col-md-5" >
                         
-                        <button  class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary mr-1">save</button>
+                        
                     </div>
+
 
                    
                 </form>

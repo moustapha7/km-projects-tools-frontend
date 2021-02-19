@@ -14,20 +14,34 @@ export class RegisterConfirmComponent implements OnInit {
 
   errorMessage = '';
   addForm: FormGroup;
+  submitted = false;
 
   codeOtp : CodeOtp =new CodeOtp();
+
   constructor( private authService : AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
     this.addForm = this.formBuilder.group({
-      username: new FormControl('', Validators.minLength(2)),
-      codeOtp: new FormControl('', Validators.minLength(2))
+      username:  ['',   Validators.required],
+      codeOtp: ['',   Validators.required]
     }); 
+  }
+
+  get f() {
+    return this.addForm.controls;
   }
 
   verifCode()
   {
+
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+       
+
     this.authService.checkCode(this.addForm.value).subscribe(
       data => {
         console.log(data);

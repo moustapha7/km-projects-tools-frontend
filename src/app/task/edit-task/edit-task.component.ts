@@ -32,7 +32,7 @@ export class EditTaskComponent implements OnInit {
   projects :Project[];
   statusTasks : StatusTask[];
   devs : Developpeur[];
-
+  submitted = false;
 
   constructor(private router : Router, private taskService :TaskService, private formBuilder:FormBuilder, private projectService :ProjectService,
     private userService : UserService, private statusTaskService : StatusTaskService, private acroute: ActivatedRoute) { }
@@ -56,20 +56,30 @@ export class EditTaskComponent implements OnInit {
     this.listStatusTask();
 
     this.addForm = this.formBuilder.group({
-      name: new FormControl('', Validators.minLength(4)),
-      description: new FormControl('', Validators.minLength(4)),
-      dateDebut:  new FormControl('', Validators.required),
-      dateFin:  new FormControl('', Validators.required),
+      name: ['',   [Validators.required, Validators.minLength(4)]],
+      description:  ['',   [Validators.required, Validators.minLength(10)]],
+      dateDebut:  ['',   Validators.required],
+      dateFin:  ['',   Validators.required],
     //  estimationJour :  new FormControl('', Validators.minLength(4)),
      // estimationHeure :  new FormControl('', Validators.minLength(4)),
-     developpeur : new FormControl('', Validators.required),
-     statusTask : new FormControl('', Validators.required),
-     project : new FormControl('', Validators.required),
+     developpeur :  ['',   Validators.required],
+     statusTask :  ['',   Validators.required],
+     project :  ['',   Validators.required],
     });
   }
 
+  get f() {
+    return this.addForm.controls;
+  }
+
+
   updateTask()
   {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
     
     this.task.developpeur = this.selectedDev;
     this.task.project = this.selectedProject;

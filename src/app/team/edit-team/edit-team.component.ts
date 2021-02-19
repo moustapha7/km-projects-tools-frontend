@@ -29,7 +29,7 @@ export class EditTeamComponent implements OnInit {
   isSuccessful = false;
   isAddProjectFailed = false;
   errorMessage = '';
-
+  submitted = false;
  
    
   constructor(
@@ -53,9 +53,9 @@ export class EditTeamComponent implements OnInit {
     this.listusers();
     
     this.addForm = this.formBuilder.group({
-      name: new FormControl('', Validators.minLength(4)),
-      description: new FormControl('', Validators.minLength(4)),
-      user: new FormControl('', Validators.minLength(4)),
+      name: ['',   [Validators.required, Validators.minLength(2)]],
+      description:['',   [Validators.required, Validators.minLength(5)]],
+      user: ['',   Validators.required],
     });
   }
 
@@ -67,7 +67,9 @@ export class EditTeamComponent implements OnInit {
     });
   }
 
-
+  get f() {
+    return this.addForm.controls;
+  }
 
   updateTeam() {
 
@@ -79,7 +81,11 @@ export class EditTeamComponent implements OnInit {
       }
     });
   
- 
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
     this.team.user = this.selectedTechLead;
     this.teamService.updateTeam(this.id, this.addForm.value).subscribe(
       (data) => {

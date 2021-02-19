@@ -16,18 +16,26 @@
                 <form [formGroup]="commentForm" class="row g-3" (ngSubmit)="SaveComment()">
 
                     <div class="col-md-5">
-                        <label>Choisir le Projet à commenter</label>
+                        <label>Project</label>
                         <select class="form-control" id="project" name="project" [(ngModel)]="selectedProject" formControlName="project"
-                             >
+                                 [ngClass]="{ 'is-invalid': submitted && f.project.errors }" >
                            
-                            <option *ngFor="let proj of projects" [ngValue]="proj"> {{proj.name}} </option>
+                            <option *ngFor="let pro of projects" [ngValue]="pro"> {{pro.name}} </option>
                         </select>
-                        
+                        <div *ngIf="submitted && f.project.errors" class="invalid-feedback">
+                            <div *ngIf="f.project.errors.required">project is required</div>
+                        </div> 
+                       
                     </div>
+
                     <div class="col-md-5">
                         <label for="email">Commentaire</label>
-                        <textarea type="text" class="form-control" id="content" name="content"
-                            [(ngModel)]="commentaire.content" formControlName="content"></textarea>
+                        <textarea type="text" class="form-control" id="content" name="content" [(ngModel)]="commentaire.content"
+                                [ngClass]="{ 'is-invalid': submitted && f.content.errors }"  formControlName="content">
+                        </textarea>
+                        <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+                            <div *ngIf="f.content.errors.required">content is required</div>
+                        </div> 
                     </div>
 
                     <div class="col-md-5">

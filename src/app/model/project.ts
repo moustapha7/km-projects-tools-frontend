@@ -1,9 +1,11 @@
 
 import { Client } from "./client";
+import { Powner } from "./powner";
 import { ProjectType } from "./projectType";
 import { StatusProject } from "./statusProject";
 import { Team } from "./team";
-import { User } from "./user";
+import { Techlead } from "./techlead";
+
 
 export class Project
 {
@@ -17,8 +19,8 @@ export class Project
 
    team:Team;
    client: Client;
-   userpo : User;
-   userteach : User;
+   powner : Powner;
+   techlead : Techlead;
    projectType: ProjectType;
    statusProject : StatusProject
 

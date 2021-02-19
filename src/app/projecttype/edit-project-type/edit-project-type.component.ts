@@ -41,7 +41,7 @@ export class EditProjectTypeComponent implements OnInit {
       });
 
     this.addForm = this.formBuilder.group({
-      name: new FormControl('', Validators.minLength(4)),
+      name : ['',   [Validators.required, Validators.minLength(2)]]
     });
   }
 
@@ -51,6 +51,12 @@ export class EditProjectTypeComponent implements OnInit {
 
   updateProjectType() {
 
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+       }
+       
     this.proTypeService
       .updateProjectType(this.id, this.addForm.value)
       .subscribe(
